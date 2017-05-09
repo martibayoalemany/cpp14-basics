@@ -1,5 +1,7 @@
-### C++ 14 basics
+# C++ 14 Basics #
+A project with some C++14 code basics
+
+The project is cmake based.
 ```
-  cmake --build
-  ./cpp14-basics
+cmake --build
 ```
