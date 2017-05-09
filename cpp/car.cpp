@@ -28,6 +28,5 @@ void Car::pthread_create_check() {
             printf("ERROR; return code from pthread_create() is %d\n", rc);
             exit(-1);
         }
-        pthread_exit(NULL);
     }
 }

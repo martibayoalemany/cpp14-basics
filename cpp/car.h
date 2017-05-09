@@ -15,6 +15,10 @@ class Car {
             this->name = "Car name";
         };
 
+        virtual ~Car() {
+            cout << "Car was destructed" << endl;
+        }
+
         std::string toString();
 
         void pthread_create_check();
