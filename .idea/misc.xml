@@ -8,6 +8,7 @@
     <excludeRoots>
       <file path="$PROJECT_DIR$/cpm-bin" />
       <file path="$PROJECT_DIR$/cpm-packages" />
+      <file path="$PROJECT_DIR$/git-libs" />
     </excludeRoots>
   </component>
 </project>

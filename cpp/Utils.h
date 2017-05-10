@@ -10,10 +10,10 @@ class Utils {
 
     public:
 
-    static void doHandleSignals(bool is_active);
     static void doMemoryAccess();
     static void doMultithreading();
     static void checkCarCreation();
+    static void setSignalHandler();
 };
 
 

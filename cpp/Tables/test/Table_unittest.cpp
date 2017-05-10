@@ -7,11 +7,8 @@
 #include "../OnTheFlyTable.h"
 #include "../TableInProtected.h"
 #include "../TableInPrivate.h"
-#include "../TableClient.h"
-#include "../Table.h"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <gmock/gmock-cardinalities.h>
 #include <memory>
 
 
@@ -23,6 +20,7 @@ using ::testing::Combine;
 using ::testing::Types;
 using ::testing::AtMost;
 using ::testing::AtLeast;
+using ::testing::InitGoogleTest;
 
 TEST(Table, doReturnInteger) {
     Table t;
@@ -33,7 +31,9 @@ TEST(Table, doReturnInteger) {
 TEST(Table, doCheckExceptions) {
     Table t;
     EXPECT_EQ(true, t.doCheckExceptions());
-    EXPECT_TRUE(t.doCheckExceptions());
+    for (int i = 0; i < 5; i++) {
+        EXPECT_TRUE(t.doCheckExceptions());
+    }
 }
 
 TEST(Table, getName) {
@@ -175,3 +175,9 @@ TEST(TableClient, Do5Calls) {
     client->doExecute();
 }
  */
+
+int main(int argc, char **argv) {
+    InitGoogleTest(&argc, argv);
+
+    return RUN_ALL_TESTS();
+}

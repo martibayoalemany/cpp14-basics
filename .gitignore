@@ -7,3 +7,7 @@ CMakeFiles
 Makefile
 cmake-build-debug
 CMakeLists.txt
+CTestTestfile.cmake
+bin
+cpp14_basics.cbp
+CMakeCache.txt

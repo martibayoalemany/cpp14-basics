@@ -8,22 +8,37 @@
 #include <sstream>
 #include <signal.h>
 #include <future>
+#include <vector>
+#include <csetjmp>
 #include "car.h"
 
 typedef std::chrono::high_resolution_clock Time;
 typedef std::chrono::duration<float> fsec;
 typedef std::chrono::milliseconds ms;
 
+jmp_buf return_to_top_level;
+
+volatile sig_atomic_t fatal_error_in_progress = 0;
 
 void ouch(int sig) {
     printf("Ouch ! expected signal %d\n",sig);
 }
 
 void auch(int sig, siginfo_t* info, void*) {
-    printf("Auch ! received signal %d - cod %d - signo %d ", sig, info->si_code, info->si_signo);
+    if (fatal_error_in_progress)
+        printf("Auch !! received signal %d - cod %d - signo %d\n", sig, info->si_code, info->si_signo);
+    else
+        printf("Auch ! received signal %d - cod %d - signo %d\n", sig, info->si_code, info->si_signo);
+    fatal_error_in_progress = 1;
+
+    longjmp (return_to_top_level, 1);
+
+    // It prevents "auch" to re-enter with the same signal
+    // signal (sig, SIG_DFL);
+    // raise (sig);
 }
 
-void Utils::doHandleSignals(bool is_active) {
+void Utils::setSignalHandler() {
     array<int, 3> arr ={{2, 3, 4}};
     cout << arr[2] << endl;
 
@@ -36,21 +51,11 @@ void Utils::doHandleSignals(bool is_active) {
     act.sa_sigaction = auch;
     act.sa_flags = SA_SIGINFO;
     sigaction(SIGSEGV, &act, 0);
-    sigaction(SIGABRT, &act, 0);
-
-    // -  SIGSEGV - (Signal Segmentation Violation) Invalid access to storage:
-    // When a program tries to read or write outside the memory it has allocated.
-    // ---
-    // - SIGABRT - (Signal Abort) Abnormal termination, such as is initiated by the abort function.
-    // signal(SIGSEGV, ouch);
-
-    // Raises signals to be processed by the event handlers
-    if(is_active)
-        raise(SIGSEGV);
-
 }
 
 void Utils::doMemoryAccess() {
+    Utils::setSignalHandler();
+
     string strarr[] = {"hello", "world", "hello!", "worldsss"};
     const char * base = strarr[0].c_str();
     printf("Size of a pointer to a string %ld \n", sizeof(base));
@@ -66,11 +71,35 @@ void Utils::doMemoryAccess() {
     *tmp =  'f';
     printf("%s\n",(char*) tmp);
 
-    // Access to an invalid position seems to work
-    char* string_ptr = "hello" ;
+    // We are gonna produce SIGSEGV
+    // -  SIGSEGV - (Signal Segmentation Violation) Invalid access to storage:
+    // When a program tries to read or write outside the memory it has allocated.
+
+    char* string_ptr = const_cast<char*>("hello");
     string_ptr = string_ptr + 6 * sizeof(char*);
-    *string_ptr = 'k';
-    printf("%s\n",(char*) string_ptr);
+
+    // We set the sigprogmask
+    sigset_t* newSig =  new sigset_t {{SIGSEGV}};
+    sigset_t* oldSig = nullptr;
+
+    auto printSigs = [=](std::string desc, sigset_t* sig_set_ptr) {
+        cout << desc << endl;
+        using UL_type = unsigned long *;
+        array<UL_type, 2> vec = {{(UL_type) newSig->__val}};
+        for (array<unsigned long *, 2>::iterator it = vec.begin(); it != vec.end(); ++it)
+            cout << *it << endl;
+    };
+
+    // TODO: This does not mask SIGSEGV
+    sigprocmask(SIG_BLOCK, newSig, oldSig);
+    printSigs("-- new Sigs --", newSig);
+    printSigs("-- old Sigs --", oldSig);
+
+    // We access here an invalid memory and we expect a SIGSEGV
+    if(setjmp(return_to_top_level) == 0){
+        *string_ptr = 'k';
+    }
+    printf("SIGSEGV does not crash the process, as we use setjmp and longjmp to skip the offending code\n");
 
 }
 

@@ -5,8 +5,6 @@
 #ifndef C_SAMPLE_3_TABLE_H
 #define C_SAMPLE_3_TABLE_H
 #include <iostream>
-#include <exception>
-#include <vector>
 
 using namespace std;
 

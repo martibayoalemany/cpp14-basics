@@ -4,15 +4,37 @@
 
 #include "Table.h"
 #include "RandomTable.h"
+#include <vector>
 
 using namespace std;
 
 void Table::doExecute() {
-    //auto exc = std::make_exception_ptr(new custom_exception());
-    //std::rethrow_exception(exc);
-
-    //throw new custom_exception;
-    //throw custom_exception();
+    static int i = -1;
+    i++;
+    cout << "---------------------------" << endl;
+    switch (i) {
+        case 0: {
+            cout << i << " Thrown custom_exception2 " <<endl;
+            throw custom_exception2();
+            break;
+        }
+        case 1: {
+            cout << i << " Thrown custom_exception exception_ptr " <<endl;
+            auto exc = std::make_exception_ptr(new custom_exception());
+            std::rethrow_exception(exc);
+            break;
+        }
+        case 2: {
+            cout << i << " Thrown new custom_exception " <<endl;
+            throw new custom_exception;
+            break;
+        }
+        case 3: {
+            cout << i << " Thrown custom_exception " <<endl;
+            throw custom_exception();
+            break;
+        }
+    }
 }
 
 
