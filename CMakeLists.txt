@@ -3,7 +3,7 @@ project(cpp14_basics)
 
 set(CMAKE_CXX_STANDARD 14)
 set(GCC_COVERAGE_COMPILE_FLAGS "-lpthread -std=c++14")
-set (CMAKE_CXX_COMPILER   "/usr/bin/clang++")
+#set (CMAKE_CXX_COMPILER   "/usr/bin/clang++")
 #set (CMAKE_CXX_COMPILER   "/usr/bin/gcc")
 
 if (DEBUG)

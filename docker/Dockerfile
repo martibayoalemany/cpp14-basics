@@ -17,9 +17,16 @@ RUN  cd /root && \
 	cd /usr/src/googletest/ && \
         cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON && make && make install    
 RUN cd /root && \
+    mkdir -p /root/.ssh && \
     ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts && \
     git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git && \
-    cd cpp-14-basics && cmake -rf . && cmake --build . && \
+    cd cpp-14-basics && rm CMakeCache.txt && cmake -rf . && \    
+# TODO: Fix the compilation with gcc
+    cmake . -DCMAKE_CXX_COMPILER=`which gcc` && cmake --build . && \
+
+RUN apt-get install clang -y && \  
+    cmake -rf .  && \ cmake . -DCMAKE_CXX_COMPILER=`which clang++` &&\
     /root/cpp-14-basics/bin/runUnitTests
+
 
 	 
