@@ -15,7 +15,8 @@ RUN  cd /root && \
         cd /root/googletest-release-1.7.0 && \
         cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON && make && make install    
 RUN cd /root && \
-    git clone git@bitbucket.org:martibayoalemany/cpp-14-basics.git && \
+    ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts && \
+    git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git && \
     cd cpp-14-basics && cmake -rf . && cmake --build . && \
     /root/cpp-14-basics/bin/runUnitTests
 
