@@ -10,9 +10,11 @@ RUN   apt-get update && apt-get install cmake -y && cmake --version
     # git clone https://github.com/google/googletest.git && \
     # cd googletest && \
 RUN  cd /root && \
-        wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz && \
-	tar xvfz release-1.7.0.tar.gz && \
-        cd /root/googletest-release-1.7.0 && \
+       # wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz && \
+       # tar xvfz release-1.7.0.tar.gz && \
+       # cd /root/googletest-release-1.7.0 && \
+       apt-get install libgtest-dev -y && \
+	cd /usr/src/googletest/ && \
         cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON && make && make install    
 RUN cd /root && \
     ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts && \
