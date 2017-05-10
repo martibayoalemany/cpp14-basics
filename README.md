@@ -20,4 +20,4 @@ cmake -rf . // clean
 cmake --build . // build 
 ```
 ### Overview of the project
-[![asciicast]()](http://asciinema.org/a/et4r293gl46kwjv3rwrubm7r3 )
+[![asciicast](https://asciinema.org/a/et4r293gl46kwjv3rwrubm7r3.png)](https://asciinema.org/a/et4r293gl46kwjv3rwrubm7r3)
