@@ -21,13 +21,11 @@ RUN cd /root && \
     ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts && \
     git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git && \
  
-RUN 
-    apt-get install clang -y && \  
+RUN apt-get install clang -y && \  
     cmake -rf .  && \ cmake . -DCMAKE_CXX_COMPILER=`which clang++` &&\
     /root/cpp-14-basics/bin/runUnitTests
 
-RUN 
+RUN cmake -rf .  && \ cmake . -DCMAKE_CXX_COMPILER=`which gcc` 
 # TODO: Fix the compilation with gcc
-    cmake -rf .  && \ cmake . -DCMAKE_CXX_COMPILER=`which gcc` 
-
+ 
  
