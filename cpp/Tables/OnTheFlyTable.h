@@ -9,8 +9,7 @@
 #include "Table.h"
 
 /**
- * Overload of the class table.
- * The generateNum methods returns infinitevely numbers between {1,2,4,8,16,24}
+ * Overload of the class table with a different generation strategy
  */
 class OnTheFlyTable : public virtual Table {
 
@@ -23,8 +22,7 @@ class OnTheFlyTable : public virtual Table {
     }
 
     /**
-     *
-     * @return
+     * @returns At each call from 1 to infinity, numbers between {1,2,4,8,16,24}
      */
     virtual int generateNum() override {
         auto&& function  = [this] ()  {
@@ -39,11 +37,7 @@ class OnTheFlyTable : public virtual Table {
         return function();
     };
 
-    /**
-     * warning: 'getTypeName' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-     * <remark> <br/>we can write override to prevent the warning </remark>
-     */
-    virtual string getTypeName() {
+    virtual string getTypeName() override {
         return "OnTheFlyTable";
     };
 

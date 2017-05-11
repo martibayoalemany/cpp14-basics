@@ -1,26 +1,26 @@
 cmake_minimum_required(VERSION 3.5)
 project(cpp14_basics)
 
-set(CMAKE_CXX_STANDARD 14)
-set(GCC_COVERAGE_COMPILE_FLAGS "-lpthread -std=c++14")
-#set (CMAKE_CXX_COMPILER   "/usr/bin/clang++")
-#set (CMAKE_CXX_COMPILER   "/usr/bin/gcc")
-
-
 if (DEBUG)
     MESSAGE("Cmake building in debug mode")
-    #set(CMAKE_CXX_FLAGS " -g -O0 -Wall -fsanitize=safe-stack -std=c++14 -Wsuggest-override")
-    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14 -Wsuggest-override")
 else()
     MESSAGE("Cmake building in release mode")
-    set(CMAKE_CXX_FLAGS "-g -O3 -Wall -std=c++14")
 endif()
+
+set(CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_COMPILER   "/usr/bin/clang++")
+#set (CMAKE_CXX_COMPILER   "/usr/bin/gcc")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/bin)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    # For secure code
+    # -fsanitize=safe-stack
+    set(ASAN_SYMBOLIZER_PATH "/usr/bin/llvm-symbolizer-3.8")
+    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -fsanitize=address -g memory-leak.c -std=c++14 -Wsuggest-override")
     MESSAGE("Using clang")
 else()
+    set(GCC_COVERAGE_COMPILE_FLAGS "-lpthread -std=c++14")
     MESSAGE("Not Using clang")
 endif()
 
@@ -40,7 +40,7 @@ set(SOURCE_FILES
         cpp/Tables/TableInPrivateChild.h cpp/Tables/TableInProtectedChild.cpp cpp/Tables/TableInProtectedChild.h
         cpp/Tables/AbsoluteTable.cpp cpp/Tables/AbsoluteTable.h cpp/Tables/TableClient.cpp cpp/Tables/TableClient.h)
 
-add_executable(cpp14_basics main.cpp ${SOURCE_FILES})
+add_executable(cpp14_basics main.cpp ${SOURCE_FILES} cpp/multithreading/te_lock_guard.cpp cpp/multithreading/te_lock_guard.h cpp/exceptions/not_implemented_exception.cpp cpp/exceptions/not_implemented_exception.h)
 
 target_link_libraries(cpp14_basics ${CMAKE_THREAD_LIBS_INIT})
 
@@ -63,15 +63,17 @@ include_directories(
 
 set(GTEST_DYNAMIC_LIBRARIES /usr/lib/x86_64-linux-gnu/libpthread.so
         /usr/local/lib/libgtest.so
-        /usr/local/lib/libgtest_main.so
-        /usr/local/lib/libgmock.so
-        /usr/local/lib/libgmock_main.so )
+        /usr/local/lib/libgtest_main.so)
+# TODO: We got a crash with gmock
+#        /usr/local/lib/libgmock.so
+#        /usr/local/lib/libgmock_main.so )
 
 set(GTEST_STATIC_LIBRARIES /usr/lib/x86_64-linux-gnu/libpthread.a
         /usr/local/lib/libgtest.a
-        /usr/local/lib/libgtest_main.a
-        /usr/local/lib/libgmock.a
-        /usr/local/lib/libgmock_main.a )
+        /usr/local/lib/libgtest_main.a)
+# TODO: We got a crash with gmock
+#        /usr/local/lib/libgmock.a
+#        /usr/local/lib/libgmock_main.a )
 
 add_executable(runUnitTests ${SOURCE_FILES} cpp/Tables/test/Table_unittest.cpp)
 

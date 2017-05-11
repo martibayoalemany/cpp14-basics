@@ -14,6 +14,9 @@ class RandomTable : public virtual Table {
     RandomTable() : Table("RandomTable") {
 
     }
+    /**
+     * @returns Returns 0 at the seventh call otherwise call @see Table::generateNum
+     */
     virtual int generateNum() override {
         static int i = 0;
         i++;

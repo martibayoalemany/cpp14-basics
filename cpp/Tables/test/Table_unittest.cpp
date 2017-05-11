@@ -41,6 +41,28 @@ TEST(Table, getName) {
     EXPECT_STREQ("Table", t.getName().c_str());
 }
 
+TEST(Table, checkUnicode) {
+    const wchar_t * mode_wc = L"modeÄÜÖ";
+    Table* t = new Table(mode_wc);
+    EXPECT_TRUE(t->getLMode() == mode_wc);
+    EXPECT_TRUE(t->getLMode() == t->getLMode2());
+
+    delete t;
+}
+
+TEST(Table, checkMovers) {
+    Table t = Table(L"mover");
+    Table t2 = Table(t);
+    EXPECT_TRUE(t.getLMode() == t2.getLMode());
+
+    // Check equality after a move
+    wcout << t2.getLMode() << endl;
+    Table t3 = std::move(t2);
+    wcout << t2.getLMode() << endl;
+    wcout << t3.getLMode() << endl;
+    EXPECT_TRUE(t3.getLMode() == t.getLMode());
+}
+
 class TableTest : public testing::Test {
     protected:
         virtual void SetUp() {
@@ -103,22 +125,19 @@ class TypedTests : public testing::Test {
         Table* table;
 };
 
+// Both tables behaves in a similar way, they return 0 at the seventh call
 typedef Types<RandomTable, OnTheFlyTable> Implementations;
 
 TYPED_TEST_CASE(TypedTests, Implementations);
 
 TYPED_TEST(TypedTests, Check0After5Times) {
-    EXPECT_TRUE(this->table->generateNum() >= 0);
-    EXPECT_TRUE(this->table->generateNum() >= 0);
-    EXPECT_TRUE(this->table->generateNum() >= 0);
-    EXPECT_TRUE(this->table->generateNum() >= 0);
-    EXPECT_TRUE(this->table->generateNum() >= 0);
-    EXPECT_TRUE(this->table->generateNum() >= 0);
+    for(int i = 0; i < 6; i++)
+        EXPECT_TRUE(this->table->generateNum() >= 0);
     EXPECT_EQ(0, this->table->generateNum());
 }
 
 /**
- * Parameterized test cases
+ * Parameterized test cases, we try the series with different values as parameter
  */
 
 class PrimeTableTest : public TestWithParam<::testing::tuple<int>> {
@@ -155,16 +174,18 @@ TEST(Table_inheritance, doCheckInheritance) {
 }
 
 /**
+ * TODO: Solve the libraries issues otherwise gmock it crashes on destruction
+ */
+
+/**
  * Mock testing
 */
-
+/*
 class MockTable : public Table {
     public:
         MOCK_METHOD0(generateNum, int());
 };
-/**
- * TODO: Solve the libraries issues otherwise gmock it crashes on destruction
- */
+*/
 /**
 TEST(TableClient, Do5Calls) {
     MockTable tableMock;
