@@ -24,4 +24,4 @@ cmake -rf . // clean
 cmake --build . // build 
 ```
 ### Overview of the project
-[![asciicast](https://asciinema.org/a/et4r293gl46kwjv3rwrubm7r3.png)](https://asciinema.org/a/et4r293gl46kwjv3rwrubm7r3)
+[![asciicast](https://asciinema.org/a/5ja5tka9ajrkggbtmr547e4ei.png)](https://asciinema.org/a/5ja5tka9ajrkggbtmr547e4ei)
