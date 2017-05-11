@@ -8,6 +8,10 @@
 
 #include "Table.h"
 
+/**
+ * Overload of the class table.
+ * The generateNum methods returns infinitevely numbers between {1,2,4,8,16,24}
+ */
 class OnTheFlyTable : public virtual Table {
 
     public:
@@ -17,6 +21,11 @@ class OnTheFlyTable : public virtual Table {
     OnTheFlyTable(bool force_on_the_fly, int maxNum) : Table(maxNum) {
 
     }
+
+    /**
+     *
+     * @return
+     */
     virtual int generateNum() override {
         auto&& function  = [this] ()  {
                                         static int i = 0;

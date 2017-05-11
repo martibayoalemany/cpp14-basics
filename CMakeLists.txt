@@ -6,13 +6,14 @@ set(GCC_COVERAGE_COMPILE_FLAGS "-lpthread -std=c++14")
 #set (CMAKE_CXX_COMPILER   "/usr/bin/clang++")
 #set (CMAKE_CXX_COMPILER   "/usr/bin/gcc")
 
+
 if (DEBUG)
     MESSAGE("Cmake building in debug mode")
     #set(CMAKE_CXX_FLAGS " -g -O0 -Wall -fsanitize=safe-stack -std=c++14 -Wsuggest-override")
-    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++1z -Wsuggest-override")
+    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14 -Wsuggest-override")
 else()
     MESSAGE("Cmake building in release mode")
-    set(CMAKE_CXX_FLAGS "-g -O3 -Wall -std=c++1z")
+    set(CMAKE_CXX_FLAGS "-g -O3 -Wall -std=c++14")
 endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/bin)
@@ -81,3 +82,30 @@ add_test(
         NAME runUnitTests
         COMMAND runUnitTests
 )
+
+#------------------------
+# Documentation with doxygen
+#-------------------------
+
+# add a target to generate API documentation with Doxygen
+find_package(Doxygen)
+option(BUILD_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
+
+if(BUILD_DOCUMENTATION)
+    if(NOT DOXYGEN_FOUND)
+        message(FATAL_ERROR "Doxygen is needed to build the documentation.")
+    endif()
+
+    set(doxyfile_in doc/Doxyfile.in)
+    set(doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+    configure_file(${doxyfile_in} ${doxyfile} @ONLY)
+
+    add_custom_target(doc
+            COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile}
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+            COMMENT "Generating API documentation with Doxygen"
+            VERBATIM)
+
+    install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc)
+endif()
