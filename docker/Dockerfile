@@ -18,10 +18,9 @@ RUN apt-get install clang -y && \
     make && ls -al /root/cpp-14-basics/bin &&\
     mv /root/cpp-14-basics/bin /root/cpp-14-basics/bin-clang &&\
     mkdir -p /root/cpp-14-basics/bin
-# TODO: Fix segmentation fault because of google mock
-# && /root/cpp-14-basics/bin/runUnitTests
+  && /root/cpp-14-basics/bin/runUnitTests
 
-RUN  cd /root/cpp-14-basics && cmake -rf .  &&  cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
+RUN  cd /root/cpp-14-basics && make clean && cmake -rf .  &&  cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
 # TODO: Fix the compilation with gcc
 
 #-----------------------
