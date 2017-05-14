@@ -1,5 +1,5 @@
 language: c++
-dist: trusty
+dist: trusty 
 sudo: require
 addons:
  apt:
