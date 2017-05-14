@@ -6,6 +6,6 @@ env:
   - DEBUG=
   - DEBUG=debug
 script: 
-  - cmake -rf 
+  - cmake -rf .
   - cmake . -DBUILD_SHARED_LIBS=ON
-  - make $DEBUG
+  - make 
