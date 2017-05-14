@@ -2,6 +2,9 @@ language: c++
 compiler:
   - gcc
   - clang
+env:
+  - DEBUG=
+  - DEBUG=debug
 script: 
   - cmake -rf 
   - cmake . -DBUILD_SHARED_LIBS=ON
