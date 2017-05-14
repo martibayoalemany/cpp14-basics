@@ -8,6 +8,6 @@ env:
   - DEBUG=
   - DEBUG=debug
 script: 
-  - cmake -rf .
+  - cmake .
   - cmake . -DBUILD_SHARED_LIBS=ON
   - make 
