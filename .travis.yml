@@ -1,6 +1,14 @@
 language: c++
-install:
-  - apt-get update && apt-get install cmake -y && cmake --version
+dist: trusty
+sudo: require
+addons:
+ apt:
+  sources:
+   - ubuntu-toolchain-r-test
+  packages:
+   - gcc-6
+   - g++-6
+   - cmake
 compiler:
   - gcc
   - clang
@@ -8,6 +16,13 @@ env:
   - DEBUG=
   - DEBUG=debug
 script: 
-  - cmake .
-  - cmake . -DBUILD_SHARED_LIBS=ON
+  - sudo ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+  - sudo ln -s /usr/bin/g++-6 /usr/local/bin/g++
+  - gcc -v && g++ -v && cmake --version
+  - cmake . 
+  - cmake . -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_COMPILER=/usr/bin/gcc
   - make 
+  - make clean
+  - cmake .
+  - clang --version
+ 
