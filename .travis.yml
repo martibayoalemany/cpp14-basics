@@ -1,0 +1,8 @@
+language: c++
+compiler:
+  - gcc
+  - clang
+script: 
+  - cmake -rf 
+  - cmake . -DBUILD_SHARED_LIBS=ON
+  - make $DEBUG
