@@ -1,29 +1,16 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+*.bak
+bin
+cmake-build-debug
+cmake-build-debug
+CMakeCache.txt
+CMakeFiles
+cpm-bin
+cpm-packages
+cpp14_basics.cbp
+cpp14_basics.cbp
+CTestTestfile.cmake
+Doxyfile
+git-libs
+Makefile
+Testing
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
