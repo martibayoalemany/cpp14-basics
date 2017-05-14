@@ -1,4 +1,6 @@
 language: c++
+install:
+  - apt-get update && apt-get install cmake -y && cmake --version
 compiler:
   - gcc
   - clang
