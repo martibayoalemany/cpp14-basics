@@ -14,15 +14,15 @@ RUN cd /root && \
     git clone -b github https://github.com/martibayoalemany/cpp14-basics.git
  
 RUN apt-get install clang -y && \  
-    cd /root/cpp-14-basics \
+    cd cpp-14-basics \
   #&& rm CMakeCache.txt && \
     cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` &&\
-    make && ls -al /root/cpp-14-basics/bin &&\
-    mv /root/cpp-14-basics/bin /root/cpp-14-basics/bin-clang &&\
-    mkdir -p /root/cpp-14-basics/bin
-  && /root/cpp-14-basics/bin/runUnitTests
+    make && cd .. && ls -al cpp-14-basics/bin &&\
+    mv cpp-14-basics/bin cpp-14-basics/bin-clang &&\
+    mkdir -p cpp-14-basics/bin
+  && cpp-14-basics/bin/runUnitTests
 
-RUN  cd /root/cpp-14-basics && make clean && cmake -rf .  &&  cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
+RUN  cd cpp-14-basics && make clean && cmake -rf .  &&  cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
 # TODO: Fix the compilation with gcc
 
 #-----------------------
