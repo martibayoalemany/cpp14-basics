@@ -17,12 +17,18 @@ env:
   - DEBUG=
   - DEBUG=debug
 script: 
-  - wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz && \
+  - wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz 
   - tar xvfz release-1.7.0.tar.gz 
+  - pushd .
   - cd /root/googletest-release-1.7.0 
   - cmake .
   - make
-  - sudo -s apt-get install libgtest-dev -	
+   # Installing google test from tar.gz
+  - sudo -s make install
+  - popd
+  - cmake .
+  - make
+  #- sudo -s apt-get install libgtest-dev -	
   - gcc -v && g++ -v && cmake --version
   - cmake . 
   - cmake . -DBUILD_SHARED_LIBS=ON 
