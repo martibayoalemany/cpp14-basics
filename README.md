@@ -1,5 +1,4 @@
-# C++ 14 Basics #
-[![Build Status](https://travis-ci.org/martibayoalemany/cpp14-basics.svg?branch=master)](https://travis-ci.org/martibayoalemany/cpp14-basics)
+# C++ 14 Basics [![Build Status](https://travis-ci.org/martibayoalemany/cpp14-basics.svg?branch=master)](https://travis-ci.org/martibayoalemany/cpp14-basics) 
 A project with some C++14 code basics
 
 The project is cmake based. 
