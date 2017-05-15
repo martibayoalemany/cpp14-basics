@@ -16,7 +16,7 @@ env:
   - DEBUG=
   - DEBUG=debug
 script: 
-  - apt-get install libgtest-dev -	
+  - sudo -s apt-get install libgtest-dev -	
   - gcc -v && g++ -v && cmake --version
   - cmake . 
   - cmake . -DBUILD_SHARED_LIBS=ON 
