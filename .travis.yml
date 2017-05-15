@@ -4,6 +4,7 @@ dist: trusty
 sudo: require
 install:
   - sudo apt-get install libgtest-dev
+  - sudo apt-get install docker-ce
 addons:
  apt:
   sources:
@@ -27,21 +28,24 @@ script:
   # make
   # sudo -s make install
   # popd 
-  #---> Installing google test from tar.gz
-   - wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz 
-   - tar xvfz release-1.7.0.tar.gz 
-   - pushd .
-   - cd googletest-release-1.7.0 
-   - cmake .
-   - make
-   - sudo -s cp libgtest_main.so /usr/local/lib
-   - sudo -s cp libgtest.so /usr/local/lib 
-   - pwd
- # - sudo -s make install
-  - popd
-  #---> Installing google test with apt-get
-  #- sudo -s apt-get install libgtest-dev -	
-  - cmake . 
-  - cmake . -DBUILD_SHARED_LIBS=ON 
-  - make 
-  - make clean
+   - docker build docker
+   - cat /home/travis/.travis/job_stages
+   - ls /home/travis/
+   - ls /home/travis/.travis
+  # ---> Installing google test from tar.gz
+  # - wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz 
+  # - tar xvfz release-1.7.0.tar.gz 
+  # - pushd .
+  # - cd googletest-release-1.7.0 
+  # - cmake .
+  # - make
+  # - sudo -s cp libgtest_main.so /usr/local/lib
+  # - sudo -s cp libgtest.so /usr/local/lib 
+  # - pwd
+  # - sudo -s make install
+  # - popd
+  # ---> Installing google test with apt-get
+  # - cmake . 
+  # - cmake . -DBUILD_SHARED_LIBS=ON 
+  # - make 
+  # - make clean
