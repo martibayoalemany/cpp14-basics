@@ -10,10 +10,12 @@ RUN  cd /root && \
 RUN cd /root && \
     mkdir -p /root/.ssh && \
     ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts && \
-    git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git 
+    # git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git 
+    git clone https://github.com/martibayoalemany/cpp14-basics.git
  
 RUN apt-get install clang -y && \  
-    cd /root/cpp-14-basics && rm CMakeCache.txt && \
+    cd /root/cpp-14-basics \
+  #&& rm CMakeCache.txt && \
     cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` &&\
     make && ls -al /root/cpp-14-basics/bin &&\
     mv /root/cpp-14-basics/bin /root/cpp-14-basics/bin-clang &&\
