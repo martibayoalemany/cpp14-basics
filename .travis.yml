@@ -2,6 +2,8 @@ language: c++
 sudo: required
 dist: trusty 
 sudo: require
+install:
+  - sudo apt-get install libgtest-dev
 addons:
  apt:
   sources:
@@ -26,18 +28,19 @@ script:
   # sudo -s make install
   # popd 
   #---> Installing google test from tar.gz
-  - wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz 
-  - tar xvfz release-1.7.0.tar.gz 
-  - pushd .
-  - cd googletest-release-1.7.0 
-  - cd googletest
-  - cmake .
-  - make
-  - sudo -s make install
+   - wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz 
+   - tar xvfz release-1.7.0.tar.gz 
+   - pushd .
+   - cd googletest-release-1.7.0 
+   - cmake .
+   - make
+   - sudo -s cp libgtest_main.so /usr/local/lib
+   - sudo -s cp libgtest.so /usr/local/lib 
+   - pwd
+ # - sudo -s make install
   - popd
   #---> Installing google test with apt-get
   #- sudo -s apt-get install libgtest-dev -	
-  - gcc -v && g++ -v && cmake --version
   - cmake . 
   - cmake . -DBUILD_SHARED_LIBS=ON 
   - make 
