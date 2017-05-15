@@ -16,13 +16,10 @@ env:
   - DEBUG=
   - DEBUG=debug
 script: 
-  - sudo ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
-  - sudo ln -s /usr/bin/g++-6 /usr/local/bin/g++
+  - apt-get install libgtest-dev -	
   - gcc -v && g++ -v && cmake --version
   - cmake . 
-  - cmake . -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_COMPILER=/usr/bin/gcc
+  - cmake . -DBUILD_SHARED_LIBS=ON 
   - make 
   - make clean
-  - cmake .
-  - clang --version
  
