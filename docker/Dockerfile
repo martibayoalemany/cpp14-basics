@@ -11,7 +11,7 @@ RUN cd /root && \
     mkdir -p /root/.ssh && \
     ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts && \
     # git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git 
-    git clone https://github.com/martibayoalemany/cpp14-basics.git
+    git clone -b github https://github.com/martibayoalemany/cpp14-basics.git
  
 RUN apt-get install clang -y && \  
     cd /root/cpp-14-basics \
