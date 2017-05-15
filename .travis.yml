@@ -4,7 +4,29 @@ dist: trusty
 sudo: require
 install:
   - sudo apt-get install libgtest-dev
+  # Allows apt over HTTPS
+  - sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+  # Docker official key
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - echo "is 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88. ?"
+  - sudo apt-key fingerprint 0EBFCD88
+  - sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+  - sudo apt-get update
+  - sudo apt-cache madison docker-ce
   - sudo apt-get install docker-ce
+  - sudo docker run hello-world
+  - lsb_release -a
+  # Download docker over http in case apt does not work
+  - wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
+  #- sudo dpkg -i docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
+  #- sudo docker run hello-world
 addons:
  apt:
   sources:
