@@ -4,8 +4,9 @@ RUN  apt-get update && apt-get install cmake -y && cmake --version
 
 RUN  cd /root && \
      apt-get install libgtest-dev -y && \
-	 cd /usr/src/googletest/ && \
-        cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON && make && make install
+	cd /usr/src/googletest/ && \
+        cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON &&
+        make && make install
 
 RUN cd /root && \
     mkdir -p /root/.ssh && \
@@ -13,23 +14,26 @@ RUN cd /root && \
     # git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git 
     git clone -b github https://github.com/martibayoalemany/cpp14-basics.git
  
-RUN apt-get install clang -y && \  
-    cd cpp-14-basics \
+RUN apt-get install clang -y 
+
+RUN git clone -b github https://github.com/martibayoalemany/cpp14-basics.git && \
+    pwd && ls -al &&  cd /root/cpp-14-basics &&\
   #&& rm CMakeCache.txt && \
     cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` &&\
     make && cd .. && ls -al cpp-14-basics/bin &&\
-    mv cpp-14-basics/bin cpp-14-basics/bin-clang &&\
-    mkdir -p cpp-14-basics/bin
-  && cpp-14-basics/bin/runUnitTests
+    mv /root/cpp-14-basics/bin /root/cpp-14-basics/bin-clang &&\
+    mkdir -p /root/cpp-14-basics/bin && \
+    /root/cpp-14-basics/bin/runUnitTests
 
-RUN  cd cpp-14-basics && make clean && cmake -rf .  &&  cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
+RUN  cd cpp-14-basics && make clean && cmake -rf .  && \
+     cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
 # TODO: Fix the compilation with gcc
 
 #-----------------------
 # Documentation
 #-----------------------
 RUN apt-get install doxygen graphviz && \
-    cd/root/cpp-14-basics && cmake -rf . -DBUILD_DOCUMENTATION=ON && \
+    cd /root/cpp-14-basics && cmake -rf . -DBUILD_DOCUMENTATION=ON && \
     make doc
 
 #-----------------------
