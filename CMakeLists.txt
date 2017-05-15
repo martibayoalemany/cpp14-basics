@@ -49,12 +49,12 @@ target_link_libraries(cpp14_basics ${CMAKE_THREAD_LIBS_INIT})
 # unit test executable
 #-------------------------
 enable_testing()
-find_package(GTest REQUIRED)
-include_directories( ${GTEST_INCLUDE_DIRS} )
+#find_package(GTest REQUIRED)
+#include_directories( ${GTEST_INCLUDE_DIRS} )
 
 
-#find_package(PkgConfig)
-#pkg_check_modules(GTEST REQUIRED gtest>=1.7.0)
+find_package(PkgConfig)
+pkg_check_modules(GTEST REQUIRED gtest>=1.7.0)
 #pkg_check_modules(GMOCK REQUIRED gmock>=1.7.0)
 
 include_directories(
