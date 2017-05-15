@@ -4,9 +4,9 @@ dist: trusty
 sudo: require
 install:
   - sudo apt-get install libgtest-dev
- # Download docker over http in case apt does not work
+  # Download docker over http in case apt does not work
   - wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
-  - sudo dpkg -i docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
+  # - sudo dpkg -i docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
   - sudo docker run hello-world
   - lsb_release -a
   # Allows apt over HTTPS
@@ -15,10 +15,7 @@ install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - echo "is 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88. ?"
   - sudo apt-key fingerprint 0EBFCD88
-  - sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
   - sudo apt-cache madison docker-ce
   #- sudo apt-get install docker-ce
