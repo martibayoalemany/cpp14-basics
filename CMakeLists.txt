@@ -18,7 +18,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     # For secure code
     # -fsanitize=safe-stack
     set(ASAN_SYMBOLIZER_PATH "/usr/bin/llvm-symbolizer-3.8")
-    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -fsanitize=address -g memory-leak.c -std=c++14 -Wsuggest-override")
+    # set(CMAKE_CXX_FLAGS " -g -O0 -Wall -fsanitize=address -g memory-leak.c -std=c++14 -Wsuggest-override")
+    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -fsanitize=address -std=c++14 -Wsuggest-override")
     MESSAGE("Using clang")
 else()
     set(GCC_COVERAGE_COMPILE_FLAGS "-lpthread -std=c++14")
