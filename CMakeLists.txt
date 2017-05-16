@@ -53,9 +53,9 @@ find_package(GTest REQUIRED)
 include_directories( ${GTEST_INCLUDE_DIRS} )
 if (${GTEST_INCLUDE_DIRS})
   MESSAGE("Gtest was found")
-else
-  set(GTEST_INCLUDE_DIRS googletest-release-1.7.0/include/)
-endif
+else()
+  set(GTEST_INCLUDE_DIRS googletest-release-1.7.0/include)
+endif()
 
 
 #find_package(PkgConfig)
