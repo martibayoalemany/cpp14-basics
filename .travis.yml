@@ -43,6 +43,7 @@ script:
   # make
   # sudo -s make install
   # popd 
+   - pwd
    - docker build docker
    - cat /home/travis/.travis/job_stages
    - ls /home/travis/

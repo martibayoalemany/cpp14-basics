@@ -11,23 +11,21 @@ RUN  cd /root && \
 RUN cd /root && \
     mkdir -p /root/.ssh && \
     ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts && \
-    # git clone https://bitbucket.org/martibayoalemany/cpp-14-basics.git 
-    git clone -b github https://github.com/martibayoalemany/cpp14-basics.git
+    git clone -b github https://github.com/martibayoalemany/cpp14-basics.git && \
+    echo `ls -al`
  
 RUN apt-get install clang -y 
 
-RUN git clone -b github https://github.com/martibayoalemany/cpp14-basics.git && \
-    pwd && ls -al &&  cd /root/cpp-14-basics &&\
-  #&& rm CMakeCache.txt && \
-    cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` &&\
-    make && cd .. && ls -al cpp-14-basics/bin &&\
-    mv /root/cpp-14-basics/bin /root/cpp-14-basics/bin-clang &&\
-    mkdir -p /root/cpp-14-basics/bin && \
-    /root/cpp-14-basics/bin/runUnitTests
+RUN cd /root/cpp14-basics &&\
+    cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` && make 
 
-RUN  cd cpp-14-basics && make clean && cmake -rf .  && \
-     cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
+RUN ls -al /root/cpp14-basics/bin
+
 # TODO: Fix the compilation with gcc
+RUN cd /root/cpp14-basics && make clean &&\
+    cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
+
+RUN ls -al /root/cpp14-basics/bin
 
 #-----------------------
 # Documentation
