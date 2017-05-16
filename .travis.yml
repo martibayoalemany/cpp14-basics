@@ -4,8 +4,8 @@ dist: trusty
 sudo: require
 install:
   - sudo apt-get install libgtest-dev -y
-  - cd /usr/src/googletest && cmake -rf . && cmake . -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON 
-  - make && make install
+  - sudo cd /usr/src/googletest && sudo cmake -rf . && sudo cmake . -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON 
+  - sudo make && sudo make install
 addons:
  apt:
   sources:
