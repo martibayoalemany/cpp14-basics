@@ -27,4 +27,4 @@ script:
    #- sudo cp lib/* /usr/local/lib/
    - cmake . 
    - make
-   - docker build docker
+   #- docker build docker
