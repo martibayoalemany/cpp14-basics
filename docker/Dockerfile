@@ -14,7 +14,9 @@ RUN cd /root && \
     git clone -b github https://github.com/martibayoalemany/cpp14-basics.git && \
     echo `ls -al`
  
-RUN apt-get install clang-3.5 -y --fix-missing 
+RUN sudo -s wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add -&& \
+    sudo -s deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.8 main | tee -a /etc/apt/sources.list && \
+    sudo apt-get install clang-3.8 -y 
 
 RUN cd /root/cpp14-basics &&\
     cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` && make 
