@@ -14,7 +14,7 @@ RUN cd /root && \
     git clone -b github https://github.com/martibayoalemany/cpp14-basics.git && \
     echo `ls -al`
  
-RUN apt-get install clang -y 
+RUN apt-get install clang-3.5 -y --fix-missing 
 
 RUN cd /root/cpp14-basics &&\
     cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` && make 
