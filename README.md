@@ -24,5 +24,3 @@ sudo apt-get -f install libboost-all-dev libgtest-dev
 cmake -rf . // clean
 cmake --build . // build 
 ```
-### Overview of the project
-[![asciicast](https://asciinema.org/a/5ja5tka9ajrkggbtmr547e4ei.png)](https://asciinema.org/a/5ja5tka9ajrkggbtmr547e4ei)
