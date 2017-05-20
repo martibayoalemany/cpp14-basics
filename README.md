@@ -1,9 +1,6 @@
 # C++ 14 Basics
-[![Build Status](https://travis-ci.org/martibayoalemany/cpp14-basics.svg?branch=github)](https://travis-ci.org/martibayoalemany/cpp14-basics)
-A project with some C++14 code basics
 
-The project is cmake based. 
-This are some of the commands you might need to install and compile.  
+A project with some C++14 code basics
 
 ### Update cmake
 ```
@@ -24,5 +21,3 @@ sudo apt-get -f install libboost-all-dev libgtest-dev
 cmake -rf . // clean
 cmake --build . // build 
 ```
-### Overview of the project
-[![asciicast](https://asciinema.org/a/5ja5tka9ajrkggbtmr547e4ei.png)](https://asciinema.org/a/5ja5tka9ajrkggbtmr547e4ei)
