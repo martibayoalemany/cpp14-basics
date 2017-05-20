@@ -3,7 +3,7 @@
 A project with some C++14 code basics
 
 The project is cmake based. 
-This are some of the commands you might need to install and compile.  
+These are some of the commands you might need to install and compile.  
 
 ### Update cmake
 ```
