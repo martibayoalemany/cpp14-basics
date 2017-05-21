@@ -28,30 +28,13 @@
 
 namespace detail {
 
-    class locker_unlocker_interface {
-         virtual void lock() = 0;
-         virtual void unlock() = 0;
-    };
-
-    class locker_unlocker_impl : locker_unlocker_interface {
-
-        void lock() override {
-            // no way to locking and unlocking here, the locking is constructor based
-            throw not_implemented_exception();
-        }
-
-        void unlock() override {
-            throw not_implemented_exception();
-        }
-    };
-
     struct locker_unlocker_base {
         virtual void lock() const = 0;
         virtual void unlock() const = 0;
     };
 
     template<class Mutex>
-    struct locker_unlocker  /* : public locker_unlocker_base */ {
+    struct locker_unlocker : public locker_unlocker_base  {
         locker_unlocker(Mutex &m) : m_m{&m} {}
         void lock() const { m_m->lock(); }
         void unlock() const { m_m->unlock(); }

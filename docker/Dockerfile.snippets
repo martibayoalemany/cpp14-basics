@@ -14,20 +14,24 @@ RUN cd /root && \
     git clone -b github https://github.com/martibayoalemany/cpp14-basics.git && \
     echo `ls -al`
  
-RUN sudo -s wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add -&& \
-    sudo -s deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.8 main | tee -a /etc/apt/sources.list && \
-    sudo apt-get install clang-3.8 -y 
+RUN apt-get install clang -y 
 
 RUN cd /root/cpp14-basics &&\
-    cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` && make 
+    cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` &&\
+    make && cd .. && ls -al cpp14-basics/bin &&\
+    mv /root/cpp14-basics/bin /root/cpp14-basics/bin-clang &&\
+    mkdir -p /root/cpp14-basics/bin 
 
-RUN ls -al /root/cpp14-basics/bin
+RUN ls -al /root/cpp14-basics/bin-clang
+RUN  /root/cpp14-basics/bin-clang/runUnitTests
+
+RUN  make clean && cmake -rf .  && \
+     cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
+
+RUN  /root/cpp14-basics/bin/runUnitTests
+
 
 # TODO: Fix the compilation with gcc
-RUN cd /root/cpp14-basics && make clean &&\
-    cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which gcc` && make
-
-RUN ls -al /root/cpp14-basics/bin
 
 #-----------------------
 # Documentation
