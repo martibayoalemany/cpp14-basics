@@ -24,6 +24,7 @@ script:
    #- sudo dkpg -L libgtest-dev
    - git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
    - cd cpp14-basics 
+
    #- sudo cp lib/* /usr/local/lib/
    - cmake . 
    - make
