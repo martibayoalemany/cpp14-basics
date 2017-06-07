@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # C++ 14 Basics
 
 ### Overview
@@ -20,6 +21,15 @@ Drawback, you don't have access to a travis shell,
 unless you run your own build server. Therefore I needed a new commit per change
 that I wanted to try, which was pretty cumbersome. The travis documentation might
 help getting further with the possibilites of travis.
+=======
+# C++ 14 Basics #
+[![Build Status](https://travis-ci.org/martibayoalemany/cpp14-basics.svg?branch=master)](https://travis-ci.org/martibayoalemany/cpp14-basics)
+A project with some C++14 code basics
+>>>>>>> 1d186843344f774f2ffd405e194e04b1dfeb05d8
+
+The project is cmake based. 
+These are some of the commands you might need to install and compile.  
+
 
 ### Update cmake
 ```
@@ -40,4 +50,3 @@ sudo apt-get -f install libboost-all-dev libgtest-dev
 
 cmake -rf . // clean
 cmake --build . // build 
-```
