@@ -186,7 +186,7 @@ class MockTable : public Table {
         MOCK_METHOD0(generateNum, int());
 };
 */
-/**
+
 TEST(TableClient, Do5Calls) {
     MockTable tableMock;
     MockTable tableMock2;
@@ -195,7 +195,7 @@ TEST(TableClient, Do5Calls) {
     TableClient* client =  new TableClient(tableMock);
     client->doExecute();
 }
- */
+ 
 
 int main(int argc, char **argv) {
     InitGoogleTest(&argc, argv);
