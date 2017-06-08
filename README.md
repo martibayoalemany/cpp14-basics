@@ -12,7 +12,7 @@ Intended only to check corner cases.
 
 ### Dependency manager (options)
 - CPM and Bazel are partially included 
-- Biicode it seems is the only supported by versioneye
+- Biicode is the only supported by versioneye, it might be interesting to check
 - Install the libraries using apt and include them using CMake and findPackage
 
 ### Continuous integration server
