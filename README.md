@@ -1,5 +1,19 @@
 # C++ 14 Basics
-[![Build Status](https://travis-ci.org/martibayoalemany/cpp14-basics.svg?branch=master)](https://travis-ci.org/martibayoalemany/cpp14-basics)
+
+### Overview
+Some snippets of code to refresh the knowledge in C++.
+Intended only to check corner cases.
+
+- Multithreading, pointers, signals, lambdas (cpp/Utils.cpp) 
+- Exception handling (cpp/Tables/Table.cpp)
+- Stl, iterators, timing, [algorithms](http://en.cppreference.com/w/cpp/algorithm) (cpp/main.cpp) 
+- Google Test (cpp/Tables/test/Table\_unittest.cpp)
+
+
+### Dependency manager (options)
+- CPM and Bazel are partially included 
+- Biicode is the only supported by versioneye, it might be interesting to check
+- Install the libraries using apt and include them using CMake and findPackage
 
 ### Overview
 Some snippets of code to refresh the knowledge in C++.
