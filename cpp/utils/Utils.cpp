@@ -10,53 +10,44 @@
 #include <future>
 #include <vector>
 #include <csetjmp>
-#include "car.h"
+#include <memory>
+#include <iostream>
+using namespace std;
 
 typedef std::chrono::high_resolution_clock Time;
 typedef std::chrono::duration<float> fsec;
 typedef std::chrono::milliseconds ms;
 
-jmp_buf return_to_top_level;
+jmp_buf long_jump_reference;
 
-volatile sig_atomic_t fatal_error_in_progress = 0;
+volatile sig_atomic_t signal_handling_result = 0;
 
-void ouch(int sig) {
-    printf("Ouch ! expected signal %d\n",sig);
-}
-
-void auch(int sig, siginfo_t* info, void*) {
-    if (fatal_error_in_progress)
-        printf("Auch !! received signal %d - cod %d - signo %d\n", sig, info->si_code, info->si_signo);
+void signal_action_handler(int sig, siginfo_t* info, void*) {
+    std::stringstream log;
+    if(signal_handling_result == 0)
+      printf("Received signal (first time) %d - cod %d - signo %d\n", sig, info->si_code, info->si_signo);
     else
-        printf("Auch ! received signal %d - cod %d - signo %d\n", sig, info->si_code, info->si_signo);
-    fatal_error_in_progress = 1;
-
-    longjmp (return_to_top_level, 1);
-
-    // It prevents "auch" to re-enter with the same signal
-    // signal (sig, SIG_DFL);
-    // raise (sig);
+      printf("Received signal %d - cod %d - signo %d\n", sig, info->si_code, info->si_signo);    
+    
+    signal_handling_result = 1;
+    longjmp(long_jump_reference, 1);
 }
 
 void Utils::setSignalHandler() {
     array<int, 3> arr ={{2, 3, 4}};
-    cout << arr[2] << endl;
-
-    string strarr[] = {"hello", "world", "hello!", "worldsss"};
-    cout << strarr->length() << endl;
-
+    cout << arr[2] << endl;    
     struct sigaction act;
-    sigemptyset(&act.sa_mask);
-    //act.sa_handler = ouch;
-    act.sa_sigaction = auch;
+    sigemptyset(&act.sa_mask);    
+    act.sa_sigaction = signal_action_handler;
     act.sa_flags = SA_SIGINFO;
     sigaction(SIGSEGV, &act, 0);
 }
 
-void Utils::doMemoryAccess() {
+void Utils::doInvalidMemoryAccess() {
+    cout << "doInvalidMemoryAccess" << endl;
     Utils::setSignalHandler();
 
-    string strarr[] = {"hello", "world", "hello!", "worldsss"};
+    string strarr[] = {"aaa", "aaaaa", "aaaaa!", "aaaaa"};
     const char * base = strarr[0].c_str();
     printf("Size of a pointer to a string %ld \n", sizeof(base));
     cout << "First Element: " << base  << endl;
@@ -71,11 +62,7 @@ void Utils::doMemoryAccess() {
     *tmp =  'f';
     printf("%s\n",(char*) tmp);
 
-    // We are gonna produce SIGSEGV
-    // -  SIGSEGV - (Signal Segmentation Violation) Invalid access to storage:
-    // When a program tries to read or write outside the memory it has allocated.
-
-    char* string_ptr = const_cast<char*>("hello");
+    char* string_ptr = const_cast<char*>("strgs");
     string_ptr = string_ptr + 6 * sizeof(char*);
 
     // We set the sigprogmask
@@ -89,17 +76,17 @@ void Utils::doMemoryAccess() {
         for (array<unsigned long *, 2>::iterator it = vec.begin(); it != vec.end(); ++it)
             cout << *it << endl;
     };
-
-    // TODO: This does not mask SIGSEGV
+    
     sigprocmask(SIG_BLOCK, newSig, oldSig);
     printSigs("-- new Sigs --", newSig);
     printSigs("-- old Sigs --", oldSig);
-
-    // We access here an invalid memory and we expect a SIGSEGV
-    if(setjmp(return_to_top_level) == 0){
+    
+    if(setjmp(long_jump_reference) == 0){
+        // We should get an SIGSEV signal
         *string_ptr = 'k';
     }
-    printf("SIGSEGV does not crash the process, as we use setjmp and longjmp to skip the offending code\n");
+
+    printf("Enf of invalid memory access\n");
 
 }
 
@@ -171,20 +158,3 @@ void Utils::doMultithreading() {
     cout << "Main thread was paused " << fs.count() << endl;
 }
 
-void Utils::checkCarCreation() {
-    unique_ptr<Car> car = std::unique_ptr<Car> {new Car()};
-    car->pthread_create_check();
-    cout << car->toString() << endl;
-
-    stringstream sstr;
-
-    sstr << "------------------- " << endl;
-    sstr << "Copy assign. " << is_copy_assignable<Car>() << endl;
-    sstr << "Copy constr. " << is_copy_constructible<Car>() << endl;
-    sstr << "Triv. copy constr. " << is_trivially_copy_constructible<Car>() << endl;
-    sstr << "No throw copy constr. " << is_nothrow_copy_constructible<Car>() << endl;
-    sstr << "Move constr. " << is_move_constructible<Car>() << endl;
-    sstr << "Triv. move constr. " << is_trivially_move_constructible<Car>() << endl;
-    sstr << "No throw move constr. " << is_nothrow_move_constructible<Car>() << endl;
-    cout << sstr.str() << endl;
-}
