@@ -16,8 +16,7 @@ compiler:
 env:
   - DEBUG=
   - DEBUG=debug
-script:    
-   - git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
-   - cd cpp14-basics    
-   - cmake . 
-   - make   
+script: 
+  - cmake -rf 
+  - cmake . -DBUILD_SHARED_LIBS=ON
+  - make
