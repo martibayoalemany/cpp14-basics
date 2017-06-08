@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-#language: c++
-#sudo: required
-#dist: trusty 
-#sudo: require
-#install:
-  # - sudo apt-get install libgtest-dev -y
-  #- sudo cd /usr/src/googletest && sudo cmake -rf . && sudo cmake . -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON 
-  #- sudo make && sudo make install
-#addons:
-# apt:
-#  sources:
-#   - ubuntu-toolchain-r-test
-#  packages:
-#   - gcc-6
-#   - g++-6
-#   - cmake
-#compiler:
-#  - gcc
-#  - clang
-#env:
-#  - DEBUG=
-#  - DEBUG=debug
-#script: 
-   #- sudo dkpg -L libgtest-dev
-   - git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
-   - cd cpp14-basics 
-
-   #- sudo cp lib/* /usr/local/lib/
-=======
 language: c++
 sudo: required
 dist: trusty 
@@ -49,6 +19,5 @@ env:
 script:    
    - git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
    - cd cpp14-basics    
->>>>>>> 6b74817e8fd3f08c9cfe3cda4a57fe6cd1347f99
    - cmake . 
    - make   
