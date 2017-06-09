@@ -12,7 +12,6 @@ addons:
    - g++-6
    - cmake
 compiler:
-  - gcc
   - clang
 env:
   - DEBUG=
