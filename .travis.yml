@@ -22,4 +22,3 @@ script:
    - cd cpp14-basics 
    - cmake -rf .
    - make
-   - docker build .
