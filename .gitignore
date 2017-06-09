@@ -13,7 +13,6 @@ Doxyfile
 git-libs
 Makefile
 Testing
-
 tags
 cmake-build-debug
 .Dockerfile.swp
