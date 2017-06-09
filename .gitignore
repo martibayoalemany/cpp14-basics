@@ -15,3 +15,5 @@ Makefile
 Testing
 
 tags
+cmake-build-debug
+.Dockerfile.swp
