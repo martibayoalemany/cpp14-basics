@@ -95,10 +95,10 @@ void Utils::doMultithreading() {
     std::promise<void> p;
     std::thread t1([&p, &t1] {
         cout << "std thread 1 started " << std::this_thread::get_id() << endl;
-        std::this_thread::sleep_for(1);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         p.set_value();
         auto start = Time::now();
-        std::this_thread::sleep_for(2);
+        std::this_thread::sleep_for(std::chrono::seconds(2));
         auto end = Time::now();
         auto elapsed = end - start;
         cout << "std thread 1 waited " << elapsed.count() << endl;
