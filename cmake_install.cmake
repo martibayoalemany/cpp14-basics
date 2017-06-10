@@ -1,4 +1,4 @@
-# Install script for directory: /home/username/src/src-github/cpp14-basics
+# Install script for directory: /home/username/src/src-bitbucket/cpp14-basics
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/username/src/src-github/cpp14-basics/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/username/src/src-bitbucket/cpp14-basics/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

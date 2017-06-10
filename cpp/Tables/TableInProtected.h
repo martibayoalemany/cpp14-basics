@@ -15,5 +15,11 @@ class TableInProtected : protected Table {
         }
 };
 
+class TableInProtectedChild : TableInProtected {
+    public:
+        string getBaseString() {
+            return this->PROTECTED_BASE_STRING;
+        }
+};
 
 #endif //C_SAMPLE_3_TABLEINPROTECTED_H

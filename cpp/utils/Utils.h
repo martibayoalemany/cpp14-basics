@@ -5,15 +5,34 @@
 #ifndef CPP14_BASICS_UTILS_H
 #define CPP14_BASICS_UTILS_H
 
+#include<iostream>
 
-class Utils {
+using namespace std;
 
-    public:
+class Utils
+{
 
+  private:
+    std::string name;
+
+  public:
     static void doInvalidMemoryAccess();
-    static void doMultithreading();    
+    static void doMultithreading();
     static void setSignalHandler();
-};
 
+    Utils()
+    {
+        this->name = "Utils name";
+    };
+
+    virtual ~Utils()
+    {
+        cout << "Utils was destructed" << endl;
+    }
+
+    std::string toString();
+
+    void pthread_create_check();
+};
 
 #endif //CPP14_BASICS_UTILS_H

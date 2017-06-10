@@ -16,7 +16,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14 -Wsuggest-override")
     MESSAGE("Using clang")
 else()
-    set(GCC_COVERAGE_COMPILE_FLAGS "-lpthread -std=c++14")
+    set(GCC_COVERAGE_COMPILE_FLAGS " -g -O0 -Wall -lpthread -std=c++14")
     MESSAGE("Not Using clang")
 endif()
 
@@ -25,8 +25,7 @@ find_package(Threads)
 set(SOURCE_FILES
         cpp/utils/Utils.cpp
         cpp/utils/Utils.h
-        cpp/multithreading/car.cpp 
-        cpp/multithreading/car.h
+        cpp/utils/compat.cpp
         cpp/Tables/Table.cpp 
         cpp/Tables/Table.h 
         cpp/Tables/Table2.cpp 
@@ -41,8 +40,6 @@ set(SOURCE_FILES
         cpp/Tables/TableInProtected.h 
         cpp/Tables/TableInPrivateChild.cpp
         cpp/Tables/TableInPrivateChild.h 
-        cpp/Tables/TableInProtectedChild.cpp 
-        cpp/Tables/TableInProtectedChild.h
         cpp/Tables/AbsoluteTable.cpp 
         cpp/Tables/AbsoluteTable.h 
         cpp/Tables/TableClient.cpp 

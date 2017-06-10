@@ -19,7 +19,7 @@ tar xvfz cmake-3.8.1.tar.gz
 
 ### Builds the project with docker (clang and gcc)
 ```
-docker build docker
+docker build . 
 ```
 
 ### Builds the project and install google test with apt
