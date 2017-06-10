@@ -22,6 +22,3 @@ RUN cd /root/cpp14-basics &&\
     cmake -rf .  && cmake . -DCMAKE_CXX_COMPILER=`which clang++` && make 
 
 RUN ls -al /root/cpp14-basics/bin
-
-
-RUN ls -al /root/cpp14-basics/bin
