@@ -13,6 +13,7 @@ addons:
    - cmake
 compiler:
   - clang
+  - gcc
 env:
   - DEBUG=
   - DEBUG=debug
