@@ -8,7 +8,7 @@ RUN  apt-get update && apt-get install cmake -y && cmake --version
 
 RUN  cd /root && \
      apt-get install libgtest-dev -y && \
-	cd /usr/src/googletest/ && \i
+	cd /usr/src/googletest/ && \
         cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON &&\
         make && make install
 
