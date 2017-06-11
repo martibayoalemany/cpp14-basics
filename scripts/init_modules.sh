@@ -16,7 +16,8 @@ pushd
 cd ${ROOT_DIR}/modules/googletest
 cmake -rf  .
 make .
-sudo -s make install
+# Currently using google gest in a local folder
+# sudo -s make install
 popd
 
 exit 0
