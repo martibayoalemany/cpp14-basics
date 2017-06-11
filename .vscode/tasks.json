@@ -1,0 +1,63 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "command": "bash",
+    "isShellCommand": true,
+    "args": [""],
+    "showOutput": "always",
+    "tasks" : [
+        {
+            "taskName": "compile",
+            "command": "make",
+            "args": ["."],
+            "isShellCommand": true,
+            "isBuildCommand": true
+        },
+        {
+            "taskName": "docker_build",
+            "command" : "scripts/docker_build.sh",
+            "args" :["${workspaceRoot}"],
+            "isShellCommand": true,
+            "isBuildCommand": false
+        },        
+        {
+            "taskName": "clean",
+            "command": "cmake",
+            "args": ["-f", "."],
+            "isShellCommand": true,
+            "isBuildCommand": false
+        },
+         {
+            "taskName": "run",
+            "command": "${cwd}/bin/cpp14basics",
+            "args": [""],
+            "isShellCommand": true,
+            "isBuildCommand": false
+        },                
+        {
+            "taskName": "list-bin",
+            "command": "ls",
+            "args": ["-al","${cwd}/bin"],
+            "isShellCommand": true,
+            "isBuildCommand": false
+        },                
+        {
+            "taskName": "environment",
+            "command": "echo",
+            "args": ["workspaceRoot - ${workspaceRoot} \n", 
+                     "workspaceRootFolderName - ${workspaceRootFolderName}\n",
+                     "file - ${file}\n",
+                     "relativeFile - ${relativeFile}\n",
+                     "fileBasename - ${fileBasename}\n",
+                     "fileBasenameNoExtension - ${fileBasenameNoExtension}\n",
+                     "fileDirname - ${fileDirname}\n",
+                     "fileExtname - ${fileExtname}\n",
+                     "cwd - ${cwd}\n",
+                     "lineNumber - ${lineNumber}\n"
+                     ],
+            "isShellCommand": true,
+            "isBuildCommand": false
+        }
+    ]
+}

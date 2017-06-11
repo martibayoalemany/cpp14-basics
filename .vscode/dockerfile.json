@@ -1,0 +1,29 @@
+{
+	// Copy file to ~/.config/Code/user/snippets
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	},	
+	"Compile cmake": {
+			"prefix": "cmake-compile",
+			"body": [
+				"RUN wget https://cmake.org/files/v${1:3.8}/cmake-${2:3.8.1}.tar.gz && \\",
+    			"tar xvfz cmake-${2:3.8.1}.tar.gz && \\",
+    			"./bootstrap && make && make install"
+			],
+			"description": "Compiles cmake"
+	},
+    "Bitbucket ssh": {
+        "prefix": "bitbucket-ssh",
+			"body": [
+				"mkdir -p /root/.ssh &&",
+    			"ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts",    			
+			],
+			"description": "Activate ssh-keyscan for bitbucket based gits"        
+    }
+
+}
