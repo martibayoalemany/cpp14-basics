@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 {
     Utils::doInvalidMemoryAccess();
     
-    array<int, 20> arr3 = {10, 2};
+    array<int, 20> arr3 = {{10, 2}};
     for_each(arr3.begin(), arr3.end(), [=](int i) { cout << i; });
 
     vector<int> vec = {1, 2, 3, 4, 5};
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     //-----------
     // array
     //-----------
-    array<int, 3> arr = {1, 2, 3};
+    array<int, 3> arr = {{1, 2, 3}};
     void (*print)(int i) = [](int i) { std::cout << i << " "; };
     for_each(arr.begin(), arr.end(), print);
     cout << endl;

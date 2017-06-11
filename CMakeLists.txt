@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/bin)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")        
-    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14 -Wsuggest-override")
+    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14")
     MESSAGE("Using clang")
 else()
     set(GCC_COVERAGE_COMPILE_FLAGS " -g -O0 -Wall -lpthread -std=c++14")

@@ -14,8 +14,6 @@
 #include <iostream>
 #include <thread>
 
-using namespace std;
-
 typedef std::chrono::high_resolution_clock Time;
 typedef std::chrono::duration<float> fsec;
 typedef std::chrono::milliseconds ms;

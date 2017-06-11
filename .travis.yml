@@ -1,5 +1,5 @@
+sudo: false
 language: c++
-sudo: required
 dist: trusty 
 sudo: require
 install:
@@ -11,6 +11,7 @@ addons:
    - gcc-6
    - g++-6
    - cmake
+   - libgtest-dev
 compiler:
   - clang
   - gcc
@@ -18,7 +19,7 @@ env:
   - DEBUG=
   - DEBUG=debug
 script: 
-   - git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
-   - cd cpp14-basics 
+   #- git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
+   #- cd cpp14-basics 
    - cmake -rf .
    - make
