@@ -42,13 +42,14 @@ class Table  {
         Table(const Table& inst) : mode(inst.mode), maxNum(inst.maxNum), mode2(inst.mode2),
                                    lmode(inst.lmode), lmode2(inst.lmode2) {
 
+            cout << "Table reference constructor was used" << endl;
         }
 
         Table(Table&& inst ) :  mode(std::move(inst.mode)), maxNum(std::move(inst.maxNum)),
                                  mode2(std::move(inst.mode2)),
                                  lmode(std::move(inst.lmode)), lmode2(std::move(inst.lmode2)){
 
-
+            cout << "Table move constructor was used" << endl;
         }
 
         // Assign operator deleted

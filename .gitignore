@@ -24,3 +24,4 @@ modules
 modules/*
 modules/biicode 
 modules/googletest
+tmp

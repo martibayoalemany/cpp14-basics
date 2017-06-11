@@ -166,7 +166,7 @@ void *PrintThreadId(void *threadid){
     long tid;
     tid = (long)threadid;    
     printf("ThreadId: %ld\n", tid);
-    return( 0 );
+    exit(0);
 }
 
 void Utils::pthread_create_check() {
@@ -181,7 +181,8 @@ void Utils::pthread_create_check() {
             printf("ERROR; return code from pthread_create() is %d\n", rc);
             exit(-1);
         }
-    }
+    }    
+    exit(0);
 }
 
 // TODO : See compat.cpp there are some issues regarding gcc

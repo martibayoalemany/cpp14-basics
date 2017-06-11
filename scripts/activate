@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function find-package() { 
+  cmake --find-package -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST -DNAME=$1
+}
+
+function idem() {
+  echo $1
+}
