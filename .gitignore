@@ -17,3 +17,4 @@ tags
 cmake-build-debug
 .Dockerfile.swp
 CMakeCache.txt
+cmake_install.cmake
