@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 
+source ./modules/.venv27/bin/activate
+
 function find-package() { 
   cmake --find-package -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST -DNAME=$1
 }
 
 function idem() {
   echo $1
+}
+# WORKAROUND: need to do a propert python installation for biicode
+alias bii="pushd . && cd /home/username/src/src-bitbucket/cpp14-basics/modules/biicode && ./bii; popd"
+alias biih="pushd . && cd /home/username/src/src-bitbucket/cpp14-basics/modules/biicode && ./bii --help; popd"
+funcion biid() {
+    for an_arg in "$@" ; do
+       echo "${an_arg}"
+     done
+     echo "--------"
+     pushd . && cd /home/username/src/src-bitbucket/cpp14-basics/modules/biicode && ./bii $@; popd
+     
 }

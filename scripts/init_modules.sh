@@ -64,4 +64,6 @@ echo "----------------------------------"
 echo Install python dependencies
 cd ${ROOT_DIR}/modules/biicode  
 pip install -r ${ROOT_DIR}/modules/biicode/client/requirements.txt 
+# Skip python-graph it does not install correctly using pip
 cat ${ROOT_DIR}/modules/biicode/common/requirements.txt | grep -v "python-graph" | xargs -n1 pip install
+
