@@ -16,7 +16,8 @@ git submodule
 echo "----------------------------------"
 echo  "Init recursive"
 echo "----------------------------------"
-git submodule update --init --recursive
+# TODO: Fails in the travis server
+# git submodule update --init --recursive
 
 echo "----------------------------------"
 echo  "Python 2.7"
