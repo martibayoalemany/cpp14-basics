@@ -1,6 +1,6 @@
 #include <type_traits>
 
-// Workaround for a gcc 4.7 and 4.8 c++ standard change
+// Workaround for a gcc 4.7 and 4.8 c++ standard change incompatibility
 // https://stackoverflow.com/questions/12702103/writing-code-that-works-when-has-trivial-destructor-is-defined-instead-of-is
 namespace std
 {

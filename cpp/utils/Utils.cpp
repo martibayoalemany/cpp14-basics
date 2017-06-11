@@ -164,9 +164,9 @@ std::string Utils::toString() {
 
 void *PrintThreadId(void *threadid){
     long tid;
-    tid = (long)threadid;
-    // std::thread::id id = std::this_thread::get_id();
+    tid = (long)threadid;    
     printf("ThreadId: %ld\n", tid);
+    return( 0 );
 }
 
 void Utils::pthread_create_check() {

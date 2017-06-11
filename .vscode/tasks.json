@@ -2,7 +2,7 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "command": "bash",
+    "command": "/bin/bash",
     "isShellCommand": true,
     "args": [""],
     "showOutput": "always",
@@ -44,7 +44,7 @@
         },                
         {
             "taskName": "environment",
-            "command": "echo",
+            "command": "tee ",
             "args": ["workspaceRoot - ${workspaceRoot} \n", 
                      "workspaceRootFolderName - ${workspaceRootFolderName}\n",
                      "file - ${file}\n",

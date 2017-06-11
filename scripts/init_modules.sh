@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Initial script to install biicode from source code
+# TODO: Install the python graph library from google
+#-----------------------------------------------------------------------------
+
 SCRIPT_DIR=$(realpath $(dirname $0))
 ROOT_DIR=${SCRIPT_DIR}/../
 echo $ROOT_DIR
