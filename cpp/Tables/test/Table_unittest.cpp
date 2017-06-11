@@ -174,18 +174,12 @@ TEST(Table_inheritance, doCheckInheritance) {
 }
 
 /**
- * TODO: Solve the libraries issues otherwise gmock it crashes on destruction
- */
-
-/**
  * Mock testing
 */
-/*
 class MockTable : public Table {
     public:
         MOCK_METHOD0(generateNum, int());
 };
-*/
 
 TEST(TableClient, Do5Calls) {
     MockTable tableMock;
@@ -196,7 +190,6 @@ TEST(TableClient, Do5Calls) {
     client->doExecute();
 }
  
-
 int main(int argc, char **argv) {
     InitGoogleTest(&argc, argv);
 
