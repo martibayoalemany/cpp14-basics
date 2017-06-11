@@ -19,5 +19,8 @@ cmake-build-debug
 CMakeCache.txt
 cmake_install.cmake
 *~
+.venv27
+modules
 modules/*
-.venv*
+modules/biicode 
+modules/googletest

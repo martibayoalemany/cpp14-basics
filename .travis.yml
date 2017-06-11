@@ -16,8 +16,11 @@ compiler:
   - clang
   - gcc
 env:
-  - DEBUG=
-  - DEBUG=debug
+  matrix:
+    - VERBOSE_MAKE=true
+    - BUILD_TYPE=debug   VERBOSE_MAKE=true
+notifications:
+  email: false  
 script: 
    #- git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
    #- cd cpp14-basics 
