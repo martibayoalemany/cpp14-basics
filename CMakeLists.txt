@@ -25,10 +25,9 @@ set(GTEST_INCLUDE_DIRS
 )
 
 find_package(Threads)
-enable_testing()
-find_package(GTest REQUIRED)
-
-include_directories(${GTEST_INCLUDE_DIRS})
+#enable_testing()
+#find_package(GTest REQUIRED)
+#include_directories(${GTEST_INCLUDE_DIRS})
 
 set(SOURCE_FILES
         cpp/utils/Utils.cpp
