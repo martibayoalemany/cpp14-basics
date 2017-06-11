@@ -13,14 +13,21 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/bin)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")        
-    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14 -Wsuggest-override")
+    set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14")
     MESSAGE("Using clang")
 else()
     set(GCC_COVERAGE_COMPILE_FLAGS " -g -O0 -Wall -lpthread -std=c++14")
     MESSAGE("Not Using clang")
 endif()
 
+set(CMAKE_PREFIX_PATH /usr/local;.)
+foreach(path ${CMAKE_PREFIX_PATH})
+  message("Path: " ${path})
+endforeach(path)
+
 find_package(Threads)
+#find_package(GTestLocal REQUIRED)
+find_package(GTest REQUIRED)
 
 set(SOURCE_FILES
         cpp/utils/Utils.cpp
@@ -50,6 +57,17 @@ set(SOURCE_FILES
         cpp/exceptions/not_implemented_exception.h
         cpp/main.cpp)
 
+file(GLOB TEST_FILES
+    cpp/Tables/test/*
+)
+file(GLOB HEADER_FILES
+    cpp/Tables/*.h
+)
+
+include_directories(cpp14_basics_tests ${GTEST_LIBRARIES} ${HEADER_FILES})
+
 add_executable(cpp14_basics ${SOURCE_FILES})
+#add_executable(cpp14_basics_tests ${SOURCE_FILES} ${TEST_FILES})
 
 target_link_libraries(cpp14_basics ${CMAKE_THREAD_LIBS_INIT})
+#target_link_libraries(cpp14_basics_tests ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})

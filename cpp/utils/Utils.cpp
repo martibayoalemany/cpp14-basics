@@ -169,6 +169,7 @@ void *PrintThreadId(void *threadid){
     tid = (long)threadid;
     // std::thread::id id = std::this_thread::get_id();
     printf("ThreadId: %ld\n", tid);
+    exit(0);
 }
 
 void Utils::pthread_create_check() {
@@ -183,7 +184,8 @@ void Utils::pthread_create_check() {
             printf("ERROR; return code from pthread_create() is %d\n", rc);
             exit(-1);
         }
-    }
+    }    
+    exit(0);
 }
 
 // TODO : See compat.cpp there are some issues regarding gcc
