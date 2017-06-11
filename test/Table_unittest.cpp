@@ -2,17 +2,19 @@
 // Created by malemany on 28/01/17.
 //
 
-#include "../Table.h"
-#include "../RandomTable.h"
-#include "../OnTheFlyTable.h"
-#include "../TableInProtected.h"
-#include "../TableInPrivate.h"
+#include <Table.h>
+#include <RandomTable.h>
+#include <OnTheFlyTable.h>
+#include <TableInProtected.h>
+#include <TableInPrivate.h>
+#include <TableClient.h>
 #include <gtest/gtest.h>
-//#include <gmock/gmock.h>
+#include <gmock/gmock.h>
 #include <memory>
 
 
 using namespace std;
+using ::testing::Mock;
 using ::testing::TestWithParam;
 using ::testing::Bool;
 using ::testing::Values;
@@ -174,26 +176,24 @@ TEST(Table_inheritance, doCheckInheritance) {
 }
 
 /**
- * TODO: Solve the libraries issues otherwise gmock it crashes on destruction
- */
-
-/**
  * Mock testing
 */
-/*
 class MockTable : public Table {
     public:
         MOCK_METHOD0(generateNum, int());
 };
-*/
+
 
 TEST(TableClient, Do5Calls) {
-    MockTable tableMock;
-    MockTable tableMock2;
-    EXPECT_CALL(tableMock, generateNum()).Times(AtLeast(5));
-    EXPECT_CALL(tableMock2, generateNum()).Times(AtMost(1));
-    TableClient* client =  new TableClient(tableMock);
+    MockTable* tableMock = new MockTable();
+    MockTable* tableMock2 = new MockTable();
+    EXPECT_CALL(*tableMock, generateNum()).Times(AtLeast(5));
+    EXPECT_CALL(*tableMock2, generateNum()).Times(AtMost(1));
+    TableClient* client =  new TableClient(*tableMock);
     client->doExecute();
+    delete client;   
+    Mock::VerifyAndClearExpectations(tableMock);     
+    Mock::VerifyAndClearExpectations(tableMock2);        
 }
  
 

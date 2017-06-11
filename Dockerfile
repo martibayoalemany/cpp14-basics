@@ -4,13 +4,12 @@ RUN wget https://cmake.org/files/v3.8/cmake-3.8.1.tar.gz && \
     tar xvfz cmake-3.8.1.tar.gz && \
     ./bootstrap && make && make install 
 
-
-RUN  apt-get update && apt-get install cmake -y && cmake --version
+#RUN  apt-get update && apt-get install cmake -y && cmake --version
 
 RUN  cd /root && \
      apt-get install libgtest-dev -y && \
-	cd /usr/src/googletest/ && \i
-        cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON &&\
+	cd /usr/src/googletest/ && \
+        cmake -rf . && cmake .  -DBUILD_SHARED_LIBS=ON  &&\
         make && make install
 
 RUN cd /root && \
