@@ -4,3 +4,6 @@
 [submodule "modules/biicode"]
 	path = modules/biicode
 	url = https://github.com/biicode/biicode.git
+[submodule "modules/python-graph"]
+	path = modules/python-graph
+	url = https://github.com/pmatiello/python-graph
