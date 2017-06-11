@@ -1,0 +1,6 @@
+[submodule "modules/googletest"]
+        path = modules/googletest
+        url = https://github.com/google/googletest.git
+[submodule "modules/biicode"]
+	path = modules/biicode
+	url = https://github.com/biicode/biicode.git

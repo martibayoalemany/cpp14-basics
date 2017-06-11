@@ -17,3 +17,9 @@ tags
 cmake-build-debug
 .Dockerfile.swp
 CMakeCache.txt
+*~
+.venv27
+modules
+modules/*
+modules/biicode 
+modules/googletest
