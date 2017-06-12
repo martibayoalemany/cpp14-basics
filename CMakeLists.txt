@@ -30,24 +30,25 @@ foreach(path ${CMAKE_PREFIX_PATH})
 endforeach(path)
 
 find_package(Threads)
+find_package(GTest)
 #find_package(GTestLocal REQUIRED)
 #enable_testing()
 #find_package(GTest REQUIRED)
 #include_directories(${GTEST_INCLUDE_DIRS})
 
-set(LOCAL_GTEST_LIBRARY ./modules/googletest/googlemock)
-find_library(GTEST_LIBRARIES 
-                NAMES gtest                      
-                      gtest_main
-                PATHS "${LOCAL_GTEST_LIBRARY}"
-                PATH_SUFFIXES lib)
+#set(LOCAL_GTEST_LIBRARY ./modules/googletest/googlemock)
+#find_library(GTEST_LIBRARIES 
+#                NAMES gtest                      
+#                      gtest_main
+#                PATHS "${LOCAL_GTEST_LIBRARY}"
+#                PATH_SUFFIXES lib)
 
 
-find_library(GMOCK_LIBRARY 
-                NAMES gmock                      
-                      gmock_main
-                PATHS "${LOCAL_GTEST_LIBRARY}"
-                PATH_SUFFIXES lib)
+#find_library(GMOCK_LIBRARY 
+#                NAMES gmock                      
+#                      gmock_main
+#                PATHS "${LOCAL_GTEST_LIBRARY}"
+#                PATH_SUFFIXES lib)
 
 file(GLOB_RECURSE SOURCE_FILES
         cpp/*

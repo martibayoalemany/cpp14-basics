@@ -1,8 +1,9 @@
-sudo: false
+sudo: true
 language: c++
 dist: trusty 
 sudo: require
 install:
+   sudo apt-get -f install libboost-all-dev libgtest-dev
 addons:
  apt:
   sources:
