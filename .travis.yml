@@ -21,8 +21,8 @@ env:
     - BUILD_TYPE=debug   VERBOSE_MAKE=true
 notifications:
   email: false  
+git:
+  submodules: false
 script:
-   #- git clone -b github https://github.com/martibayoalemany/cpp14-basics.git 
-   #- cd cpp14-basics    
    - cmake -rf .
    - make
