@@ -15,11 +15,30 @@
 #include <fstream>
 #include <sstream>
 #include "cpp/utils/Utils.h"
+#include "cpp/Tables_templates/TableBase.h"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
+    TableImpl<Strateg1>* impl = new TableImpl<Strateg1>();
+    for(int i=0; i < 20; i ++) {
+        Strateg1 strg;
+        cout << impl->generateNum(strg) << endl;
+    }
+
+    TableImpl<Strateg2>* impl2 = new TableImpl<Strateg2>();
+    for(int i=0; i < 20; i ++) {      
+        Strateg2 strg2;  
+        cout << impl2->generateNum(strg2) << endl;
+    }
+
+    TableImpl<int>* impl3 = new TableImpl<int>();
+    for(int i=0; i < 20; i ++) {  
+        int type =0;      
+        cout << impl3->generateNum(type) << endl;
+    }
+
     Utils::doInvalidMemoryAccess();
     
     array<int, 20> arr3 = {{10, 2}};

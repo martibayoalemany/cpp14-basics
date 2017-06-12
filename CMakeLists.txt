@@ -56,12 +56,12 @@ file(GLOB_RECURSE SOURCE_FILES
 file(GLOB TEST_FILES
     test/*
 )
-file(GLOB HEADER_FILES
+file(GLOB_RECURSE HEADER_FILES
     cpp/*    
 )
-
-add_executable(cpp14_basics main.cpp ${SOURCE_FILES})
-add_executable(cpp14_basics_tests ${SOURCE_FILES} ${TEST_FILES})
+include_directories(${HEADER_FILES})
+add_executable(cpp14_basics main.cpp ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(cpp14_basics_tests ${SOURCE_FILES} ${TEST_FILES} ${HEADER_FILES})
 
 target_link_libraries(cpp14_basics ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(cpp14_basics_tests ${GTEST_LIBRARIES} ${GMOCK_LIBRARY} ${CMAKE_THREAD_LIBS_INIT})

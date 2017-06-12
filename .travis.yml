@@ -27,3 +27,5 @@ script:
    - ./scripts/init_modules.sh
    - cmake -rf .
    - make
+   - ./bin/cpp14_basics
+   - ./bin/cpp14_basics_test

@@ -2,12 +2,12 @@
 // Created by malemany on 28/01/17.
 //
 
-#include <Table.h>
-#include <RandomTable.h>
-#include <OnTheFlyTable.h>
-#include <TableInProtected.h>
-#include <TableInPrivate.h>
-#include <TableClient.h>
+#include "../cpp/Tables/Table.h"
+#include "../cpp/Tables/RandomTable.h"
+#include "../cpp/Tables/OnTheFlyTable.h"
+#include "../cpp/Tables/TableInProtected.h"
+#include "../cpp/Tables/TableInPrivate.h"
+#include "../cpp/Tables/TableClient.h"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include <memory>
