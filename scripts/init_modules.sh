@@ -12,11 +12,10 @@ rm -rf modules/*
 git submodule add -f  https://github.com/google/googletest.git ./modules/googletest
 git submodule add -f  https://github.com/biicode/biicode.git ./modules/biicode
 git submodule add -f https://github.com/pmatiello/python-graph ./modules/python-graph
-git submodule 
 echo "----------------------------------"
 echo  "Init recursive"
 echo "----------------------------------"
-# TODO: Fails in the travis server
+# TODO: Find out why this fails in the travis server 
 # git submodule update --init --recursive
 
 echo "----------------------------------"
