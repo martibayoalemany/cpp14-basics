@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Initial script to install biicode from source code
-# TODO: Install the python graph library from google
 #-----------------------------------------------------------------------------
 
 SCRIPT_DIR=$(realpath $(dirname $0))
@@ -12,11 +11,14 @@ rm -rf modules/*
 git submodule add -f  https://github.com/google/googletest.git ./modules/googletest
 git submodule add -f  https://github.com/biicode/biicode.git ./modules/biicode
 git submodule add -f https://github.com/pmatiello/python-graph ./modules/python-graph
-git submodule 
+mkdir repos
+cd repos
+git clone https://github.com/biicode/biicode.git
+git clone https://github.com/pmatiello/python-graph
 echo "----------------------------------"
 echo  "Init recursive"
 echo "----------------------------------"
-# TODO: Fails in the travis server
+# TODO: Find out why this fails in the build server 
 # git submodule update --init --recursive
 
 echo "----------------------------------"
@@ -54,7 +56,7 @@ pushd .
 cd ${ROOT_DIR}/modules/googletest
 cmake -rf  .
 make .
-# Currently using google gest in a local folder
+# Currently using google test in a local folder
 # sudo -s make install
 popd
 
