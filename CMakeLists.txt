@@ -32,7 +32,6 @@ foreach(path ${CMAKE_PREFIX_PATH})
 endforeach(path)
 
 find_package(Threads)
-find_package(GTest REQUIRED)
 #find_package(GTestLocal REQUIRED)
 #enable_testing()
 #find_package(GTest REQUIRED)
