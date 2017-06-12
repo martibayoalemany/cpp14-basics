@@ -153,7 +153,7 @@ int main(int argc, char **argv)
 
     chrono::steady_clock::time_point st_now = chrono::steady_clock::now();
     fstream textFile;
-    textFile.open("/home/malemany/txt/text.txt", ios::in);
+    textFile.open("data/text.txt", ios::in);
     stringstream buffer;
     buffer << textFile.rdbuf();
     textFile.close();
@@ -277,4 +277,7 @@ int main(int argc, char **argv)
     cout << "system clock : " << std::chrono::duration_cast<chrono::microseconds>(en_sys_now - st_sys_now).count() << endl;
     cout << "steady clock : " << std::chrono::duration_cast<chrono::microseconds>(en_std_now - st_std_now).count() << endl;
     cout << "high clock : " << std::chrono::duration_cast<chrono::microseconds>(en_high_now - st_high_now).count() << endl; 
+
+  exit(0);
 }
+

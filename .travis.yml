@@ -24,6 +24,10 @@ notifications:
 git:
   submodules: false
 script:
+   - if which gcc; then `which gcc` -v; fi
    - cmake -rf .
    - make
    - ./bin/cpp14_basics
+   - echo $?
+   - ./bin/cpp14_basics_test
+   - echo $?

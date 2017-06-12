@@ -25,3 +25,4 @@ modules/*
 modules/biicode 
 modules/googletest
 tmp
+a.out

@@ -12,11 +12,13 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/bin)
 
+message("COMPILER_ID : " ${CMAKE_CXX_COMPILER_ID})
+
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")        
     set(CMAKE_CXX_FLAGS " -g -O0 -Wall -std=c++14")
     MESSAGE("Using clang")
 else()
-    set(GCC_COVERAGE_COMPILE_FLAGS " -g -O0 -Wall -lpthread -std=c++14")
+    set(GCC_COVERAGE_COMPILE_FLAGS " -g -O0 -Wall -lpthread -std=c++14 -ggdb")
     MESSAGE("Not Using clang")
 endif()
 
@@ -30,6 +32,7 @@ foreach(path ${CMAKE_PREFIX_PATH})
 endforeach(path)
 
 find_package(Threads)
+find_package(GTest REQUIRED)
 #find_package(GTestLocal REQUIRED)
 #enable_testing()
 #find_package(GTest REQUIRED)
