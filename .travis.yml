@@ -30,5 +30,5 @@ script:
    # TODO: Fix the segmentation fault with gcc
    #- ./bin/cpp14_basics
    #- echo $?
-   - [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test was not generated in this build" 
+   #- [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
    - echo $?
