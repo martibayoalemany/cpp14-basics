@@ -15,11 +15,32 @@
 #include <fstream>
 #include <sstream>
 #include "cpp/utils/Utils.h"
+//#include "cpp/Tables_templates/TableBase.h~"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
+    /*
+        TableImpl<Strateg1>* impl = new TableImpl<Strateg1>();
+        for(int i=0; i < 20; i ++) {
+            Strateg1 strg;
+            cout << impl->generateNum(strg) << endl;
+        }
+
+        TableImpl<Strateg2>* impl2 = new TableImpl<Strateg2>();
+        for(int i=0; i < 20; i ++) {      
+            Strateg2 strg2;  
+            cout << impl2->generateNum(strg2) << endl;
+        }
+
+        TableImpl<int>* impl3 = new TableImpl<int>();
+        for(int i=0; i < 20; i ++) {  
+            int type=0;      
+            cout << impl3->generateNum(type) << endl;
+        }
+    */
+
     Utils::doInvalidMemoryAccess();
     
     array<int, 20> arr3 = {{10, 2}};
@@ -132,7 +153,7 @@ int main(int argc, char **argv)
 
     chrono::steady_clock::time_point st_now = chrono::steady_clock::now();
     fstream textFile;
-    textFile.open("/home/malemany/txt/text.txt", ios::in);
+    textFile.open("data/text.txt", ios::in);
     stringstream buffer;
     buffer << textFile.rdbuf();
     textFile.close();
@@ -256,4 +277,7 @@ int main(int argc, char **argv)
     cout << "system clock : " << std::chrono::duration_cast<chrono::microseconds>(en_sys_now - st_sys_now).count() << endl;
     cout << "steady clock : " << std::chrono::duration_cast<chrono::microseconds>(en_std_now - st_std_now).count() << endl;
     cout << "high clock : " << std::chrono::duration_cast<chrono::microseconds>(en_high_now - st_high_now).count() << endl; 
+
+  exit(0);
 }
+
