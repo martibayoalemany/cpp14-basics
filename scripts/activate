@@ -1,22 +1,38 @@
 #!/usr/bin/env bash
+SCRIPT_PATH=$(realpath $(dirname $0))
+ROOT_PATH=$(realpath $SCRIPT_PATH/../)
 
-source ./modules/.venv27/bin/activate
-
-function find-package() { 
-  cmake --find-package -DCOMPILER_ID=GNU -DLANGUAGE=C -DMODE=EXIST -DNAME=$1
-}
 
 function idem() {
   echo $1
 }
-# WORKAROUND: need to do a propert python installation for biicode
-alias bii="pushd . && cd /home/username/src/src-bitbucket/cpp14-basics/modules/biicode && ./bii; popd"
-alias biih="pushd . && cd /home/username/src/src-bitbucket/cpp14-basics/modules/biicode && ./bii --help; popd"
-funcion biid() {
-    for an_arg in "$@" ; do
-       echo "${an_arg}"
-     done
-     echo "--------"
-     pushd . && cd /home/username/src/src-bitbucket/cpp14-basics/modules/biicode && ./bii $@; popd
-     
+
+function pip_ins_free() {
+    [ $(python --version | cut -d' ' -f2 | sed -e 's/.*\(3\.5\).*/\1/g')='3.5' ] && requirements='requirements_3_5.txt' || requirements='requirements.txt'
+    echo $1
+    pip install $1
+    [ ! -e $requirements ] && touch $requirements || echo $requirements exists
+    echo $requirements
+    [ $?=0 ] && (pip freeze | grep $1 | tee -a $ROOT_PATH/$requirements) || echo installation of $1 failed
 }
+
+function git_log() {
+   git log --graph --pretty=format:'%C(Red) %h %C(Yellow) %s'
+}
+
+function gitignore_untracked() {
+    for an_arg in "$@" ; do
+      echo "${an_arg}"
+     done
+    git status  | sed '1,/Untracked/d' | grep -v '(use' | sed -e 's/\W\(.*\)/\1/g' | tee -a .gitignore
+}
+
+function pip_cache_wheels() {
+   mkdir wheels-cache
+   cat requirements.txt | xargs -n1 pip wheel --wheel-dir=wheels-cache
+}
+
+function pip_install_from_wheels() {
+    cat requirements.txt | xargs -n1 pip install --use-wheel --no-index --find-links=./wheels-cache
+}
+

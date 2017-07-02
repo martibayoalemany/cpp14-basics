@@ -11,7 +11,6 @@ rm -rf modules/*
 git submodule add -f  https://github.com/google/googletest.git ./modules/googletest
 git submodule add -f  https://github.com/biicode/biicode.git ./modules/biicode
 git submodule add -f https://github.com/pmatiello/python-graph ./modules/python-graph
-<<<<<<< HEAD
 mkdir repos
 cd repos
 git clone https://github.com/biicode/biicode.git
@@ -20,12 +19,6 @@ echo "----------------------------------"
 echo  "Init recursive"
 echo "----------------------------------"
 # TODO: Find out why this fails in the build server 
-=======
-echo "----------------------------------"
-echo  "Init recursive"
-echo "----------------------------------"
-# TODO: Find out why this fails in the travis server 
->>>>>>> github
 # git submodule update --init --recursive
 
 echo "----------------------------------"

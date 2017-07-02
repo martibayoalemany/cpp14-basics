@@ -14,3 +14,8 @@ Intended only to check corner cases.
 ### Configuration
 
 - It is a CMake project but it has some configuration of the modules at scripts/init_modules.sh
+
+### Use conan
+```
+conan install .. --build googletest
+```

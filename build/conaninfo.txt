@@ -1,0 +1,43 @@
+[settings]
+    arch=x86_64
+    build_type=Release
+    compiler=clang
+    compiler.libcxx=libstdc++
+    compiler.version=3.8
+    os=Linux
+
+[requires]
+    googletest/1.Y.Z
+
+[options]
+
+
+[full_settings]
+    arch=x86_64
+    build_type=Release
+    compiler=clang
+    compiler.libcxx=libstdc++
+    compiler.version=3.8
+    os=Linux
+
+[full_requires]
+    googletest/1.7.0@azriel91/stable-1:59fbade496afeffcefbfbaab308c58eddabda920
+
+[full_options]
+    googletest:BUILD_SHARED_LIBS=OFF
+    googletest:GTEST_HAS_PTHREAD=None
+    googletest:GTEST_HAS_TR1_TUPLE=None
+    googletest:GTEST_USE_OWN_TR1_TUPLE=None
+    googletest:gtest_build_samples=OFF
+    googletest:gtest_build_tests=OFF
+    googletest:gtest_disable_pthreads=OFF
+    googletest:gtest_force_shared_crt=OFF
+
+[scope]
+    dev=True
+
+[recipe_hash]
+
+
+[env]
+

@@ -27,3 +27,4 @@ modules/googletest
 tmp
 a.out
 *.swp
+modules
