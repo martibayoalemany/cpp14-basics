@@ -4,6 +4,7 @@
         "iostream": "cpp",
         "functional": "cpp",
         "chrono": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "cmakeccompilerid.c": "cpp"
     }
 }
