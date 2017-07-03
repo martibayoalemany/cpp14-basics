@@ -28,3 +28,4 @@ tmp
 a.out
 *.swp
 modules
+CMakeFiles

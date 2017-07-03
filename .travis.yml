@@ -3,7 +3,6 @@ language: c++
 dist: trusty 
 sudo: require
 install:
-#   sudo apt-get -f install libboost-all-dev libgtest-dev
    pip install conan
 addons:
  apt:
@@ -15,8 +14,7 @@ addons:
    - cmake
    - libgtest-dev
 compiler:
-  - clang
-  #- gcc
+  - clang  
 env:
   matrix:
     - VERBOSE_MAKE=true
@@ -26,15 +24,14 @@ notifications:
 git:
   submodules: false
 script:
-   #- if which gcc; then `which gcc` -v; fi
    - cd build
    - conan install .. 
    - conan install .. --build googletest
+   - conan install .. --build VTK
    - cd ..
    - cmake -rf .
-   - make
-   # TODO: Fix the segmentation fault with gcc
+   - make   
    - ./bin/cpp14_basics
    - echo $?
-   #- [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
-   #- echo $?
+   - [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
+   - echo $?
