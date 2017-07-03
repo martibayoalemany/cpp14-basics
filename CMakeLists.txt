@@ -27,18 +27,15 @@ include(build/conanbuildinfo.cmake)
 
 conan_basic_setup()
 
-file(GLOB_RECURSE SOURCE_FILES
-        cpp/*
-        )
+file(GLOB_RECURSE SOURCE_FILES cpp/*)
 
-file(GLOB TEST_FILES
-    test/*
-)
+file(GLOB TEST_FILES test/*)
 
-file(GLOB_RECURSE HEADER_FILES
-    cpp/*    
-)
+file(GLOB_RECURSE HEADER_FILES cpp/*  )
 
 include_directories(${HEADER_FILES})
 add_executable(cpp14_basics main.cpp ${SOURCE_FILES} ${HEADER_FILES})
 target_link_libraries(cpp14_basics ${CMAKE_THREAD_LIBS_INIT} ${CONAN_LIBS})
+
+add_executable(cpp14_basics_tests main.cpp ${TEST_FILES} ${SOURCE_FILES})
+target_link_libraries(cpp14_basics_tests  ${CMAKE_THREAD_LIBS_INIT} ${CONAN_LIBS})

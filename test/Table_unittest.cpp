@@ -157,7 +157,7 @@ TYPED_TEST(TypedTests, Check0After5Times)
 /**
  * Parameterized test cases, we try the series with different values as parameter
  */
-
+/*
 class PrimeTableTest : public TestWithParam<::testing::tuple<int>>
 {
   protected:
@@ -186,6 +186,7 @@ TEST_P(PrimeTableTest, ReturnAllPositives)
 }
 
 INSTANTIATE_TEST_CASE_P(MeaningfulTestParameters, PrimeTableTest, Values(1, 2, 3, 4, 5, 6, 10));
+*/
 
 /**
 * Testing inheritance
@@ -215,8 +216,10 @@ TEST(TableClient, Do5Calls)
     TableClient *client = new TableClient(*tableMock);
     client->doExecute();
     delete client;
-    Mock::VerifyAndClearExpectations(tableMock);
+    Mock::VerifyAndClearExpectations(tableMock);    
     Mock::VerifyAndClearExpectations(tableMock2);
+    delete tableMock
+    delete tableMock2
 }
 
 int main(int argc, char **argv)

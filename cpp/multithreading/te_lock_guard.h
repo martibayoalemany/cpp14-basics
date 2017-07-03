@@ -20,7 +20,7 @@
 */
 
 /**
- * synchroized macro dealing with lock guards in a java like way
+ * synchronized macro dealing with lock guards in a java like way
 */
 #define synchronized(m) \
     for(te_lock_guard lk(m); lk; )

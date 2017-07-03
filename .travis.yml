@@ -3,7 +3,8 @@ language: c++
 dist: trusty 
 sudo: require
 install:
-   pip install conan
+   - sudo apt-get -f install libboost-all-dev libgtest-dev
+   - pip install conan
 addons:
  apt:
   sources:
@@ -27,11 +28,14 @@ script:
    - cd build
    - conan install .. 
    - conan install .. --build googletest
-   - conan install .. --build VTK
+   #- conan install .. --build VTK
+   #- conan install .. --build Boost
    - cd ..
    - cmake -rf .
    - make   
    - ./bin/cpp14_basics
+   - echo $?
+   - ./bin/cpp14_basics_test
    - echo $?
    #- [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
    #- echo $?
