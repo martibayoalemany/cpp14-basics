@@ -4,6 +4,7 @@ dist: trusty
 sudo: require
 install:
    sudo apt-get -f install libboost-all-dev libgtest-dev
+   pip install conan
 addons:
  apt:
   sources:
@@ -15,7 +16,7 @@ addons:
    - libgtest-dev
 compiler:
   - clang
-  - gcc
+  #- gcc
 env:
   matrix:
     - VERBOSE_MAKE=true
@@ -26,6 +27,10 @@ git:
   submodules: false
 script:
    #- if which gcc; then `which gcc` -v; fi
+   - cd build
+   - conan install .. 
+   - conan install .. --build llvm
+   - cd ..
    - cmake -rf .
    - make
    # TODO: Fix the segmentation fault with gcc
