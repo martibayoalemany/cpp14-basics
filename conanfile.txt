@@ -1,10 +1,15 @@
 [requires]
 googletest/1.8.0@astrohawk/stable
+gmock/1.8.0@meshell/stable
 #Boost/1.64.0@eliaskousk/stable
 #llvm/3.8.0@smspillaz/stable
 #VTK/7.0.0@bilke/stable
 #OpenCV/3.2.0@ohhi/stable
 
+[options]
+#gtest:shared=True
+gtest:no_gmock=False
+getest:no_main=False
 
 [generators]
 cmake

@@ -3,7 +3,7 @@ language: c++
 dist: trusty 
 sudo: require
 install:
-   - sudo apt-get -f install libboost-all-dev libgtest-dev
+#   - sudo apt-get -f install libboost-all-dev libgtest-dev
    - pip install conan
 addons:
  apt:
@@ -29,7 +29,8 @@ script:
    - conan install .. 
    - conan install .. --build googletest
    #- conan install .. --build VTK
-   #- conan install .. --build Boost
+   - conan install .. --build Boost
+   - conan install ..  --build gmock
    - cd ..
    - cmake -rf .
    - make   
