@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set -o errexit
 PROJECT_ROOT=${1:?You must pass the path to your file Dockerfile}
 PROJECT_ROOT=$(realpath ${PROJECT_ROOT})
 [[ $? == 0 ]]; PROJECT_NAME=$(realpath $0 | sed 's/.*\/\(.*\)\/.*\/.*/\1/')
