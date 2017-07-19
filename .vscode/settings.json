@@ -7,5 +7,6 @@
         "type_traits": "cpp",
         "cmakeccompilerid.c": "cpp"
     },
-    "travis.statusPollingInterval": 60
+    "travis.statusPollingInterval": 60,
+    "C_Cpp.intelliSenseEngine": "Default" 
 }

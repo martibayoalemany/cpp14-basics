@@ -1,12 +1,13 @@
 [settings]
     arch=x86_64
     build_type=Release
-    compiler=clang
+    compiler=gcc
     compiler.libcxx=libstdc++
-    compiler.version=3.8
+    compiler.version=6.3
     os=Linux
 
 [requires]
+    gmock/1.Y.Z
     googletest/1.Y.Z
 
 [options]
@@ -15,15 +16,19 @@
 [full_settings]
     arch=x86_64
     build_type=Release
-    compiler=clang
+    compiler=gcc
     compiler.libcxx=libstdc++
-    compiler.version=3.8
+    compiler.version=6.3
     os=Linux
 
 [full_requires]
-    googletest/1.7.0@azriel91/stable-1:59fbade496afeffcefbfbaab308c58eddabda920
+    gmock/1.8.0@meshell/stable:4cc931e24e37948d83aaaf638aeca02991ff6d08
+    googletest/1.8.0@astrohawk/stable:9adcff233a86f52b6879aa1058c2023523649d34
 
 [full_options]
+    gmock:cygwin_msvc=False
+    gmock:disable_pthreads=False
+    gmock:shared=False
     googletest:BUILD_SHARED_LIBS=OFF
     googletest:GTEST_HAS_PTHREAD=None
     googletest:GTEST_HAS_TR1_TUPLE=None
@@ -31,7 +36,7 @@
     googletest:gtest_build_samples=OFF
     googletest:gtest_build_tests=OFF
     googletest:gtest_disable_pthreads=OFF
-    googletest:gtest_force_shared_crt=OFF
+    googletest:gtest_force_shared_crt=ON
 
 [scope]
     dev=True

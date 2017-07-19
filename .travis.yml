@@ -3,38 +3,75 @@ language: c++
 dist: trusty 
 sudo: require
 install:
-#   - sudo apt-get -f install libboost-all-dev libgtest-dev
    - pip install conan
-addons:
- apt:
-  sources:
-   - ubuntu-toolchain-r-test
-  packages:
-   - gcc-6
-   - g++-6
-   - cmake
-   - libgtest-dev
+env:
+   global:
+     - CONAN_REFERENCE: "cpp14-basic/1.0.0"
+     - CONAN_USERNAME: "user"
+     - CONAN_LOGIN_USERNAME: "user"
+     - CONAN_CHANNEL: "testings"
+     
+linux: &linux
+   os: linux
+   sudo: required
+   language: python
+   python: "3.6"
+   services:
+     - docker
+osx: &osx
+   os: osx
+   language: generic
+matrix:
+   include:
+
+      - <<: *linux
+        env: CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49
+
+      - <<: *linux
+        env: CONAN_GCC_VERSIONS=5.4 CONAN_DOCKER_IMAGE=lasote/conangcc54
+
+      - <<: *linux
+        env: CONAN_GCC_VERSIONS=6.3 CONAN_DOCKER_IMAGE=lasote/conangcc63
+
+install:
+  - chmod +x .travis/install.sh
+  - ./.travis/install.sh
 compiler:
+  - gcc
   - clang  
 env:
   matrix:
-    - VERBOSE_MAKE=true
     - BUILD_TYPE=debug   VERBOSE_MAKE=true
+    - BUILD_TYPE=   VERBOSE_MAKE=true
+matrix:
+  allow_failures:
+    - env BUILD_TYPE=debug
 notifications:
   email: false  
 git:
   submodules: false
+  depth: 3
+branches:
+  except: 
+    - gh-pages
 script:
-   - cd build
-   - conan install .. 
-   - conan install .. --build googletest
-   #- conan install .. --build VTK
-   - conan install .. --build Boost
-   - conan install ..  --build gmock
-   - cd ..
-   - cmake -rf .
-   - make   
-   - ./bin/cpp14_basics
-   - echo $?
-   - [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
-   - echo $?
+# Build with conan docker integration
+  - chmod +x .travis/run.sh
+  - ./.travis/run.sh
+# Build with the regular travis integration
+  - cd build
+  - conan install .. 
+  - conan install .. --build googletest
+  #- conan install .. --build VTK
+  - conan install .. --build Boost
+  - conan install ..  --build gmock
+  - cd ..
+  - cmake -rf .
+  - make   
+  - ./bin/cpp14_basics
+  - echo $?
+  - [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
+  - echo $?
+
+
+ 

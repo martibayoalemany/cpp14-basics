@@ -9,7 +9,9 @@
 #include "../cpp/Tables/TableInPrivate.h"
 #include "../cpp/Tables/TableClient.h"
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
+#ifdef DEBUG
+  #include <gmock/gmock.h>
+#endif
 #include <memory>
 
 using namespace std;
@@ -198,6 +200,7 @@ TEST(Table_inheritance, doCheckInheritance)
     TableInPrivate ti_priv;
 }
 
+#ifdef DEBUG
 /**
  * Mock testing
 */
@@ -221,6 +224,7 @@ TEST(TableClient, Do5Calls)
     delete tableMock
     delete tableMock2
 }
+#endif
 
 int main(int argc, char **argv)
 {

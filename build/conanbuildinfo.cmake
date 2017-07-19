@@ -1,10 +1,33 @@
-set(CONAN_GOOGLETEST_ROOT "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920")
-set(CONAN_INCLUDE_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/include")
-set(CONAN_LIB_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/lib")
-set(CONAN_BIN_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/bin")
-set(CONAN_RES_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/res")
-set(CONAN_BUILD_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/")
-set(CONAN_LIBS_GOOGLETEST gtest pthread)
+set(CONAN_GMOCK_ROOT "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08")
+set(CONAN_INCLUDE_DIRS_GMOCK "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/include")
+set(CONAN_LIB_DIRS_GMOCK "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/lib")
+set(CONAN_BIN_DIRS_GMOCK "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/bin")
+set(CONAN_RES_DIRS_GMOCK "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/res")
+set(CONAN_BUILD_DIRS_GMOCK "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/")
+set(CONAN_LIBS_GMOCK gtest gtest_main gmock gmock_main pthread)
+set(CONAN_DEFINES_GMOCK )
+# COMPILE_DEFINITIONS are equal to CONAN_DEFINES without -D, for targets
+set(CONAN_COMPILE_DEFINITIONS_GMOCK )
+
+set(CONAN_C_FLAGS_GMOCK "")
+set(CONAN_CXX_FLAGS_GMOCK "")
+set(CONAN_SHARED_LINKER_FLAGS_GMOCK "")
+set(CONAN_EXE_LINKER_FLAGS_GMOCK "")
+
+# For modern cmake targets we use the list variables (separated with ;)
+set(CONAN_C_FLAGS_GMOCK_LIST "")
+set(CONAN_CXX_FLAGS_GMOCK_LIST "")
+set(CONAN_SHARED_LINKER_FLAGS_GMOCK_LIST "")
+set(CONAN_EXE_LINKER_FLAGS_GMOCK_LIST "")
+
+
+set(CONAN_GOOGLETEST_ROOT "/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34")
+set(CONAN_INCLUDE_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/include")
+set(CONAN_LIB_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/lib")
+set(CONAN_BIN_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/bin")
+set(CONAN_RES_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/res")
+set(CONAN_BUILD_DIRS_GOOGLETEST "/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/")
+set(CONAN_LIBS_GOOGLETEST gtest gtest_main pthread)
 set(CONAN_DEFINES_GOOGLETEST )
 # COMPILE_DEFINITIONS are equal to CONAN_DEFINES without -D, for targets
 set(CONAN_COMPILE_DEFINITIONS_GOOGLETEST )
@@ -27,7 +50,7 @@ set(CONAN_EXE_LINKER_FLAGS_GOOGLETEST_LIST "")
 set(CONAN_PACKAGE_NAME None)
 set(CONAN_PACKAGE_VERSION None)
 
-set(CONAN_DEPENDENCIES googletest)
+set(CONAN_DEPENDENCIES gmock googletest)
 # Storing original command line args (CMake helper) flags
 set(CONAN_CMD_CXX_FLAGS ${CONAN_CXX_FLAGS})
 
@@ -35,13 +58,18 @@ set(CONAN_CMD_SHARED_LINKER_FLAGS ${CONAN_SHARED_LINKER_FLAGS})
 set(CONAN_CMD_C_FLAGS ${CONAN_C_FLAGS})
 # Defining accumulated conan variables for all deps
 
-set(CONAN_INCLUDE_DIRS "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/include" ${CONAN_INCLUDE_DIRS})
-set(CONAN_LIB_DIRS "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/lib" ${CONAN_LIB_DIRS})
-set(CONAN_BIN_DIRS "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/bin" ${CONAN_BIN_DIRS})
-set(CONAN_RES_DIRS "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/res" ${CONAN_RES_DIRS})
-set(CONAN_LIBS gtest pthread ${CONAN_LIBS})
+set(CONAN_INCLUDE_DIRS "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/include"
+			"/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/include" ${CONAN_INCLUDE_DIRS})
+set(CONAN_LIB_DIRS "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/lib"
+			"/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/lib" ${CONAN_LIB_DIRS})
+set(CONAN_BIN_DIRS "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/bin"
+			"/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/bin" ${CONAN_BIN_DIRS})
+set(CONAN_RES_DIRS "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/res"
+			"/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/res" ${CONAN_RES_DIRS})
+set(CONAN_LIBS gmock gmock_main gtest gtest_main pthread ${CONAN_LIBS})
 set(CONAN_DEFINES  ${CONAN_DEFINES})
-set(CONAN_CMAKE_MODULE_PATH "/home/username/.conan/data/googletest/1.7.0/azriel91/stable-1/package/59fbade496afeffcefbfbaab308c58eddabda920/" ${CONAN_CMAKE_MODULE_PATH})
+set(CONAN_CMAKE_MODULE_PATH "/home/username/.conan/data/gmock/1.8.0/meshell/stable/package/4cc931e24e37948d83aaaf638aeca02991ff6d08/"
+			"/home/username/.conan/data/googletest/1.8.0/astrohawk/stable/package/9adcff233a86f52b6879aa1058c2023523649d34/" ${CONAN_CMAKE_MODULE_PATH})
 
 set(CONAN_CXX_FLAGS " ${CONAN_CXX_FLAGS}")
 set(CONAN_SHARED_LINKER_FLAGS " ${CONAN_SHARED_LINKER_FLAGS}")
@@ -59,6 +87,39 @@ macro(conan_define_targets)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CONAN_CMD_C_FLAGS}")
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${CONAN_CMD_SHARED_LINKER_FLAGS}")
 
+
+    conan_find_libraries_abs_path("${CONAN_LIBS_GMOCK}" "${CONAN_LIB_DIRS_GMOCK}"
+                                  CONAN_FULLPATH_LIBS_GMOCK)
+    conan_find_libraries_abs_path("${CONAN_LIBS_GMOCK_DEBUG}" "${CONAN_LIB_DIRS_GMOCK_DEBUG}"
+                                  CONAN_FULLPATH_LIBS_GMOCK_DEBUG)
+    conan_find_libraries_abs_path("${CONAN_LIBS_GMOCK_RELEASE}" "${CONAN_LIB_DIRS_GMOCK_RELEASE}"
+                                  CONAN_FULLPATH_LIBS_GMOCK_RELEASE)
+
+    add_library(CONAN_PKG::gmock INTERFACE IMPORTED)
+
+    # Property INTERFACE_LINK_FLAGS do not work, necessary to add to INTERFACE_LINK_LIBRARIES
+    set_property(TARGET CONAN_PKG::gmock PROPERTY INTERFACE_LINK_LIBRARIES ${CONAN_FULLPATH_LIBS_GMOCK} ${CONAN_SHARED_LINKER_FLAGS_GMOCK_LIST} ${CONAN_EXE_LINKER_FLAGS_GMOCK_LIST}
+                                                                 $<$<CONFIG:Release>:${CONAN_FULLPATH_LIBS_GMOCK_RELEASE} ${CONAN_SHARED_LINKER_FLAGS_GMOCK_RELEASE_LIST} ${CONAN_EXE_LINKER_FLAGS_GMOCK_RELEASE_LIST}>
+                                                                 $<$<CONFIG:RelWithDebInfo>:${CONAN_FULLPATH_LIBS_GMOCK_RELEASE} ${CONAN_SHARED_LINKER_FLAGS_GMOCK_RELEASE_LIST} ${CONAN_EXE_LINKER_FLAGS_GMOCK_RELEASE_LIST}>
+                                                                 $<$<CONFIG:MinSizeRel>:${CONAN_FULLPATH_LIBS_GMOCK_RELEASE} ${CONAN_SHARED_LINKER_FLAGS_GMOCK_RELEASE_LIST} ${CONAN_EXE_LINKER_FLAGS_GMOCK_RELEASE_LIST}>
+                                                                 $<$<CONFIG:Debug>:${CONAN_FULLPATH_LIBS_GMOCK_DEBUG} ${CONAN_SHARED_LINKER_FLAGS_GMOCK_DEBUG_LIST} ${CONAN_EXE_LINKER_FLAGS_GMOCK_DEBUG_LIST}>
+                                                                 )
+    set_property(TARGET CONAN_PKG::gmock PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CONAN_INCLUDE_DIRS_GMOCK}
+                                                                      $<$<CONFIG:Release>:${CONAN_INCLUDE_DIRS_GMOCK_RELEASE}>
+                                                                      $<$<CONFIG:RelWithDebInfo>:${CONAN_INCLUDE_DIRS_GMOCK_RELEASE}>
+                                                                      $<$<CONFIG:MinSizeRel>:${CONAN_INCLUDE_DIRS_GMOCK_RELEASE}>
+                                                                      $<$<CONFIG:Debug>:${CONAN_INCLUDE_DIRS_GMOCK_DEBUG}>)
+    set_property(TARGET CONAN_PKG::gmock PROPERTY INTERFACE_COMPILE_DEFINITIONS ${CONAN_COMPILE_DEFINITIONS_GMOCK}
+                                                                      $<$<CONFIG:Release>:${CONAN_COMPILE_DEFINITIONS_GMOCK_RELEASE}>
+                                                                      $<$<CONFIG:RelWithDebInfo>:${CONAN_COMPILE_DEFINITIONS_GMOCK_RELEASE}>
+                                                                      $<$<CONFIG:MinSizeRel>:${CONAN_COMPILE_DEFINITIONS_GMOCK_RELEASE}>
+                                                                      $<$<CONFIG:Debug>:${CONAN_COMPILE_DEFINITIONS_GMOCK_DEBUG}>)
+    set_property(TARGET CONAN_PKG::gmock PROPERTY INTERFACE_COMPILE_OPTIONS ${CONAN_C_FLAGS_GMOCK_LIST} ${CONAN_CXX_FLAGS_GMOCK_LIST}
+                                                                  $<$<CONFIG:Release>:${CONAN_C_FLAGS_GMOCK_RELEASE_LIST} ${CONAN_CXX_FLAGS_GMOCK_RELEASE_LIST}>
+                                                                  $<$<CONFIG:RelWithDebInfo>:${CONAN_C_FLAGS_GMOCK_RELEASE_LIST} ${CONAN_CXX_FLAGS_GMOCK_RELEASE_LIST}>
+                                                                  $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_GMOCK_RELEASE_LIST} ${CONAN_CXX_FLAGS_GMOCK_RELEASE_LIST}>
+                                                                  $<$<CONFIG:Debug>:${CONAN_C_FLAGS_GMOCK_DEBUG_LIST}  ${CONAN_CXX_FLAGS_GMOCK_DEBUG_LIST}>)
+ 
 
     conan_find_libraries_abs_path("${CONAN_LIBS_GOOGLETEST}" "${CONAN_LIB_DIRS_GOOGLETEST}"
                                   CONAN_FULLPATH_LIBS_GOOGLETEST)
@@ -92,7 +153,7 @@ macro(conan_define_targets)
                                                                   $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_GOOGLETEST_RELEASE_LIST} ${CONAN_CXX_FLAGS_GOOGLETEST_RELEASE_LIST}>
                                                                   $<$<CONFIG:Debug>:${CONAN_C_FLAGS_GOOGLETEST_DEBUG_LIST}  ${CONAN_CXX_FLAGS_GOOGLETEST_DEBUG_LIST}>)
  
-    set(CONAN_TARGETS CONAN_PKG::googletest)
+    set(CONAN_TARGETS CONAN_PKG::gmock CONAN_PKG::googletest)
 
 endmacro()
 

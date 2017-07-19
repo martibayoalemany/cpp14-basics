@@ -11,4 +11,5 @@
 ### Conan
 ```
 conan install .. --build googletest
+conan new cpp14-basic/1.0.0@user/testings -t -s -cilg -cis
 ```
