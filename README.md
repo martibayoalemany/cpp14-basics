@@ -13,7 +13,7 @@
 conan install .. --build googletest
 ```
 
-### Creates a new travis file with a conan, docker, gcc integration
+### Creates a new travis cofiguration
 ```
 conan new cpp14-basic/1.0.0@user/testings -t -s -cilg -cis
 ```
