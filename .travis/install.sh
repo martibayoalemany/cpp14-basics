@@ -19,6 +19,12 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
     pyenv activate conan
 fi
 
+# python 3
+python3 -m venv .venv3 
+source .venv3/bin/activate
+pip install --upgrade pip
+pip install -r ../requirements_3_5.txt
+
 pip install conan --upgrade
 pip install conan_package_tools
 
