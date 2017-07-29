@@ -5,10 +5,10 @@ sudo: require
 install:
     # python 3
    - python3 -m venv .venv3 
-   - source .venv3/bin/activate
-   - pip install --upgrade pip
-   - pip install -r ../requirements_3_5.txt
-   - pip install conan
+   - source .venv3/bin/activate && \ 
+     pip install --upgrade pip && \
+     pip install -r requirements_3_5.txt && \
+     pip install conan
 env:
    global:
      - CONAN_REFERENCE: "cpp14-basic/1.0.0"
@@ -65,14 +65,15 @@ script:
   - ./.travis/run.sh
 # Build with the regular travis integration
   - cd build
-  - conan install .. 
-  - conan install .. --build googletest
-  #- conan install .. --build VTK
-  - conan install .. --build Boost
-  - conan install ..  --build gmock
-  - cd ..
-  - cmake -rf .
-  - make   
+   - source .venv3/bin/activate && \ 
+     conan install .. && \
+     conan install .. --build googletest && \
+  #  conan install .. --build VTK && \
+     conan install .. --build Boost && \
+     conan install ..  --build gmock && \
+     cd .. && \
+     cmake -rf . && \
+     make   
   - ./bin/cpp14_basics
   - echo $?
   - [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
