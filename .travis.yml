@@ -1,7 +1,6 @@
 sudo: true
 language: c++
 dist: trusty 
-sudo: require
 install:
     # python 3
    - sudo apt install python3
@@ -10,38 +9,15 @@ install:
      pip install --upgrade pip && \
      pip install -r requirements_3_5.txt && \
      pip install conan
+  - chmod +x .travis/install.sh
+  - ./.travis/install.sh
 env:
    global:
      - CONAN_REFERENCE: "cpp14-basic/1.0.0"
      - CONAN_USERNAME: "user"
      - CONAN_LOGIN_USERNAME: "user"
      - CONAN_CHANNEL: "testings"
-     
-linux: &linux
-   os: linux
-   sudo: required
-   language: python
-   python: "3.6"
-   services:
-     - docker
-osx: &osx
-   os: osx
-   language: generic
-matrix:
-   include:
-
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=lasote/conangcc49
-
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=5.4 CONAN_DOCKER_IMAGE=lasote/conangcc54
-
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=6.3 CONAN_DOCKER_IMAGE=lasote/conangcc63
-
-install:
-  - chmod +x .travis/install.sh
-  - ./.travis/install.sh
+ 
 compiler:
   - gcc
   - clang  
@@ -73,8 +49,5 @@ script:
      make   
   - ./bin/cpp14_basics
   - echo $?
-  - [ -e ./bin/cpp14_basics_test ] && ./bin/cpp14_basics_test || echo "cpp14_basics_test no found" 
+  - ./bin/cpp14_basics_test 
   - echo $?
-
-
- 
