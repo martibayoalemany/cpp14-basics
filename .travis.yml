@@ -61,8 +61,7 @@ branches:
     - gh-pages
 script:
 # Build with conan docker integration
-  - chmod +x .travis/run.sh
-  - ./.travis/run.sh
+  - chmod +x .travis/run.sh && ./.travis/run.sh
 # Build with the regular travis integration
   - cd build
    - source .venv3/bin/activate && \ 
