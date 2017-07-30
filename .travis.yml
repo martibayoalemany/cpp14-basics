@@ -61,14 +61,11 @@ branches:
   except: 
     - gh-pages
 script:
-# Build with conan docker integration
   - chmod +x .travis/run.sh && ./.travis/run.sh
-# Build with the regular travis integration
   - cd build
    - source .venv3/bin/activate && \ 
      conan install .. && \
      conan install .. --build googletest && \
-  #  conan install .. --build VTK && \
      conan install .. --build Boost && \
      conan install ..  --build gmock && \
      cd .. && \
