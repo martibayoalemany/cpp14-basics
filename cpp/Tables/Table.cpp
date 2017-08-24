@@ -1,7 +1,3 @@
-//
-// Created by malemany on 28/01/17.
-//
-
 #include "Table.h"
 #include "RandomTable.h"
 #include <vector>
